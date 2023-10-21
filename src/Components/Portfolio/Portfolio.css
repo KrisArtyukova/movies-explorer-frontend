@@ -1,0 +1,118 @@
+.portfolio {
+    margin-bottom: 90px;
+
+}
+
+.portfolio__title {
+    color: #A0A0A0;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 50px;
+}
+
+.portfolio__project {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    padding-bottom: 96px;
+}
+
+.portfolio__project_item {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    border-bottom: solid 1px #E6E6E6;
+    margin-bottom: 20px;
+}
+
+.portfolio__project_item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+
+}
+
+.portfolio__project_link {
+    text-decoration: none;
+    color: inherit;
+    font-family: Inter;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 50px; /* 166.667% */
+    letter-spacing: -1.2px;
+    padding-bottom: 19px;
+}
+
+.portfolio__project_img {
+    width: 18px;
+    box-sizing: border-box;
+    border-style: none;
+    padding-bottom: 8px;
+    margin-right: 5px;
+}
+
+@media screen and (max-width: 768px) {
+    .portfolio__project_img {
+        width: 19px;
+        padding-bottom: 14px;
+        margin-right: 5px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .portfolio__project_img {
+        width: 12px;
+        padding-bottom: 21px;
+        margin-right: 4px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .portfolio__title {
+        margin-bottom: 50px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .portfolio__title {
+        font-size: 14px;
+        margin-bottom: 42px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .portfolio__project {
+        padding-bottom: 59px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .portfolio__project {
+        padding-bottom: 59px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .portfolio__project {
+        padding-bottom: 39px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .portfolio__project_link {
+        font-size: 28px;
+        letter-spacing: -1.12px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .portfolio__project_link {
+        font-size: 18px;
+        line-height: 28px; /* 155.556% */
+        letter-spacing: -0.72px;
+    }
+}

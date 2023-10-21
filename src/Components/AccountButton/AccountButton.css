@@ -1,0 +1,47 @@
+.header__navigation_account-btn {
+    position: relative;
+    border: none;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+    width: 100px;
+    height: 32px;
+    box-shadow: 0px 3px 14px 0px rgba(0, 0, 0, 0.08);
+    color: #000;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: Inter;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 12px;
+    border-radius: 40px;
+    padding: 0 27px 0 0;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.header__navigation_account-btn:after {
+    content: url(../../images/icon_acc.svg);
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    right: 4px;
+    top: 3px;
+    background-color: #F9F9F9;
+    padding: 8px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header__navigation_account-btn_dark {
+    background-color: #2BE080;
+}
+
+.header__navigation_account-btn_dark:after {
+    background-color: #FFFFFF;
+}

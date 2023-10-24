@@ -55,6 +55,12 @@
     width: 100%;
 }
 
+.search__form_input:focus {
+    outline: 1px solid #3456F3;
+    outline-offset: 5px;
+    border-radius: 10px;
+}
+
 @media screen and (max-width: 768px) {
     .search__form_input {
         margin-top: 80px;

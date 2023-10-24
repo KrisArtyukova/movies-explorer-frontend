@@ -35,7 +35,7 @@ function MoviesCardList({ page }) {
   return (
     <section className="cards">
       <ul className="cards__container">
-        {cardData.map(() => <MoviesCard title="Название" page={page} />)}
+        {cardData.map(() => <MoviesCard title="Название" page={page} imgAlt="Описание" />)}
       </ul>
       <div className="cards__more">
         <button type="button" className="cars__more_btn">Еще</button>

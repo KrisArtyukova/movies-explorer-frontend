@@ -5,7 +5,7 @@ import like from '../../images/heart_red.svg';
 import deleteImg from '../../images/delete.svg';
 import { MoviesPage } from '../../utils/constants';
 
-function MoviesCard({ title, page }) {
+function MoviesCard({ title, page, imgAlt }) {
   let img;
   switch (page) {
     case MoviesPage.SavedMovies:
@@ -20,7 +20,7 @@ function MoviesCard({ title, page }) {
 
   return (
     <li className="card">
-      <img src={card} className="card__img" alt="Постер фильма" />
+      <img src={card} className="card__img" alt={imgAlt} />
       <div className="card__description">
         <h2 className="card__description_text">{title}</h2>
         <button type="button" className="card__description_like"><img src={img} alt="Лайк" /></button>

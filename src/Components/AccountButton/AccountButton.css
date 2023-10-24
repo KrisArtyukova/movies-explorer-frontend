@@ -15,12 +15,18 @@
     font-weight: 500;
     line-height: 12px;
     border-radius: 40px;
-    padding: 0 13px 0 0;
+    padding: 0 14px 0 0;
     background-color: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
     text-decoration: none;
+}
+
+@media screen and (max-width: 425px) {
+    .header__navigation_account-btn {
+        margin-right: 12px;
+    }
 }
 
 .header__navigation_account-btn:hover {

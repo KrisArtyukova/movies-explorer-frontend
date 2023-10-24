@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 function Error() {
   return (
-    <section className="error">
+    <main className="error">
       <div className="error__message">
         <h1 className="error__message_title">404</h1>
         <p className="error__message_description">Страница не найдена</p>
@@ -12,7 +12,7 @@ function Error() {
       <div className="error__btn">
         <Link to="/" type="button" className="error__btn_back">Назад</Link>
       </div>
-    </section>
+    </main>
 
   );
 }

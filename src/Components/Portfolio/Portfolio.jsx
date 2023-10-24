@@ -8,16 +8,16 @@ function Portfolio() {
       <h4 className="portfolio__title">Портфолио</h4>
       <ul className="portfolio__project">
         <li className="portfolio__project_item">
-          <a href="#" className="portfolio__project_link">Статичный сайт</a>
-          <img src={arrow} alt="Стрелка" className="portfolio__project_img" />
+          <p className="portfolio__project_label">Статичный сайт</p>
+          <a className="portfolio__project_link" href="https://krisartyukova.github.io/travel-to-russia/#" target="_blank" rel="noreferrer"><img src={arrow} alt="Стрелка" className="portfolio__project_img" /></a>
         </li>
         <li className="portfolio__project_item">
-          <a href="#" className="portfolio__project_link">Адаптивный сайт</a>
-          <img src={arrow} alt="Стрелка" className="portfolio__project_img" />
+          <p className="portfolio__project_label">Адаптивный сайт</p>
+          <a className="portfolio__project_link" href="https://krisartyukova.github.io/mesto/" target="_blank" rel="noreferrer"><img src={arrow} alt="Стрелка" className="portfolio__project_img" /></a>
         </li>
         <li className="portfolio__project_item">
-          <a href="#" className="portfolio__project_link">Одностраничное приложение</a>
-          <img src={arrow} alt="Стрелка" className="portfolio__project_img" />
+          <p className="portfolio__project_label">Одностраничное приложение</p>
+          <a className="portfolio__project_link" href="https://krismesto.nomoredomainsrocks.ru" target="_blank" rel="noreferrer"><img src={arrow} alt="Стрелка" className="portfolio__project_img" /></a>
         </li>
       </ul>
     </section>

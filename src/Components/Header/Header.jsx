@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../../images/logo.png';
+import logo from '../../images/logo.svg';
 import './Header.css';
 import AccountButton from '../AccountButton/AccountButton';
 import AppContext from '../../contexts/AppContext';
@@ -40,8 +40,50 @@ function HeaderBurger() {
 }
 
 function Header({ headerView, colorMode }) {
-  let content = null;
+  const [content, setContent] = useState(null);
   let headerMainClass = '';
+  const mediaQueryList768 = window.matchMedia('(max-width: 768px)');
+
+  function handleResize() {
+    if (mediaQueryList768.matches) {
+      setContent(<HeaderBurger />);
+    } else {
+      setContent(<FullSizeHeaderMenu />);
+    }
+  }
+
+  useEffect(() => {
+    switch (headerView) {
+      case HeaderView.Authorized:
+        if (mediaQueryList768.matches) {
+          setContent(<HeaderBurger />);
+        } else {
+          setContent(<FullSizeHeaderMenu />);
+        }
+        break;
+      case HeaderView.NotAuthorized:
+        setContent(
+          <nav className="header__btn">
+            <Link to="/signup" className="header__btn-reg" aria-label="Регистрация">
+              Регистрация
+            </Link>
+            <Link to="/signin" className="header__btn-in" aria-label="Войти">
+              Войти
+            </Link>
+          </nav>,
+        );
+        break;
+      default:
+        setContent(null);
+        break;
+    }
+    if (headerView === HeaderView.Authorized) window.addEventListener('resize', handleResize);
+  }, []);
+
+  useEffect(() => () => {
+    window.removeEventListener('resize', handleResize);
+  }, []);
+
   switch (colorMode) {
     case ColorMode.Dark:
       headerMainClass = 'header header_dark';
@@ -53,35 +95,13 @@ function Header({ headerView, colorMode }) {
       headerMainClass = '';
       break;
   }
-  const mediaQueryList768 = window.matchMedia('(max-width: 768px)');
-
-  switch (headerView) {
-    case HeaderView.Authorized:
-      content = mediaQueryList768.matches
-        ? <HeaderBurger />
-        : <FullSizeHeaderMenu />;
-      break;
-    case HeaderView.NotAuthorized:
-      content = (
-        <div className="header__btn">
-          <Link to="/signup" className="header__btn-reg" aria-label="Регистрация">
-            Регистрация
-          </Link>
-          <Link to="/signin" className="header__btn-in" aria-label="Войти">
-            Войти
-          </Link>
-        </div>
-      );
-      break;
-    default:
-      content = null;
-      break;
-  }
 
   return (
     <header className={headerMainClass}>
-      <Link to="/"><img src={logo} className="header__logo" alt="Логотип" /></Link>
-      {content}
+      <div className="header__container">
+        <Link to="/"><img src={logo} className="header__logo" alt="Логотип" /></Link>
+        {content}
+      </div>
     </header>
   );
 }

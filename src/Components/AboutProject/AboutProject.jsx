@@ -7,7 +7,7 @@ function AboutProject() {
     <section className="project">
       <div className="project__container">
         <BlockTitle title="Технологии" />
-        <h1 className="project__title">7 технологий</h1>
+        <h3 className="project__title">7 технологий</h3>
         <p className="project__subtitle">На курсе веб-разработки мы освоили технологии, которые применили в дипломном проекте.</p>
         <ul className="techs">
           <li className="techs__name">HTML</li>

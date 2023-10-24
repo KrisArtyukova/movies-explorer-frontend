@@ -84,8 +84,14 @@
     text-decoration: none;
 }
 
+.error__btn_back:hover {
+    opacity: 0.55;
+    transition: 0.15s;
+}
+
 @media screen and (max-width: 420px) {
     .error__btn_back {
         font-size: 12px;
     }
 }
+

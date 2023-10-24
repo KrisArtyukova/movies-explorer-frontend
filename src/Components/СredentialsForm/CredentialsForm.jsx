@@ -1,7 +1,7 @@
 import React from 'react';
 import './CredentialsForm.css';
 import { Link } from 'react-router-dom';
-import logo from '../../images/logo.png';
+import logo from '../../images/logo.svg';
 
 export const View = {
   Login: 'Login',
@@ -43,27 +43,27 @@ function CredentialsForm({ view }) {
   return (
     <div className="credentials">
       <div className="credentials__header">
-        <img src={logo} className="credentials__header_logo" alt="Логотип" />
+        <Link to="/" className="credentials__header_link"><img src={logo} className="credentials__header_logo" alt="Логотип" /></Link>
         <h1 className="credentials__header_title">{title}</h1>
       </div>
       <form className={formClass}>
         {view === View.Register ? (
           <>
             <div className="credentials__form_container">
-              <span className="credentials__form_container-span">Имя</span>
-              <input placeholder="Введите имя" type="name" className="credentials__form_container-input" />
+              <label htmlFor="credentialsName" className="credentials__form_container-span">Имя</label>
+              <input minLength="3" maxLength="10" required name="credentialsName" placeholder="Введите имя" type="name" className="credentials__form_container-input" />
             </div>
             <div className="credentials__form_divider" />
           </>
         ) : null}
         <div className="credentials__form_container">
-          <span className="credentials__form_container-span">E-mail</span>
-          <input placeholder="Введите E-mail" type="email" className="credentials__form_container-input" />
+          <label htmlFor="credentialsEmail" className="credentials__form_container-span">E-mail</label>
+          <input required name="credentialsEmail" placeholder="Введите E-mail" type="email" className="credentials__form_container-input" />
         </div>
         <div className="credentials__form_divider" />
         <div className="credentials__form_container">
-          <span className="credentials__form_container-span">Пароль</span>
-          <input placeholder="Пароль" type="password" className="credentials__form_container-input" />
+          <label htmlFor="credentialsPassword" className="credentials__form_container-span">Пароль</label>
+          <input minLength="3" maxLength="10" required name="credentialsPassword" placeholder="Пароль" type="password" className="credentials__form_container-input" />
           <div className="credentials__form_divider credentials__form_divider_description" />
           <p className="credentials__form_container-description">Что-то пошло не так...</p>
         </div>

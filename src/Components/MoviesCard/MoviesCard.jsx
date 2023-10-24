@@ -19,14 +19,14 @@ function MoviesCard({ title, page }) {
   }
 
   return (
-    <article className="card">
+    <li className="card">
       <img src={card} className="card__img" alt="Постер фильма" />
       <div className="card__description">
-        <h1 className="card__description_text">{title}</h1>
+        <h2 className="card__description_text">{title}</h2>
         <button type="button" className="card__description_like"><img src={img} alt="Лайк" /></button>
       </div>
       <p className="card__duration">1ч42м</p>
-    </article>
+    </li>
   );
 }
 

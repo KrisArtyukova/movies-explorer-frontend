@@ -5,7 +5,7 @@
     max-width: 100%;
     background-color: #F5F5F5;
     margin-bottom: 110px;
-    padding-top: 102px;
+    padding-top: 101px;
     padding-left: 70px;
     padding-right: 70px;
 }
@@ -38,7 +38,7 @@
     font-weight: 400;
     line-height: 20px; /* 142.857% */
     letter-spacing: -0.56px;
-    margin: 26px auto 100px;
+    margin: 26px auto 98px;
 }
 
 .techs{
@@ -47,7 +47,7 @@
     padding: 0;
     gap: 10px;
     margin: 0 auto;
-    padding-bottom: 100px;
+    padding-bottom: 102px;
 }
 
 .techs__name {
@@ -78,7 +78,7 @@
     }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 425px) {
     .project {
         background-color: #FFF;
         padding-top: 77px;
@@ -102,7 +102,7 @@
     }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 425px) {
     .project__title {
         margin-top: 49px;
     }
@@ -132,7 +132,7 @@
     }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 425px) {
     .project__subtitle {
         margin-top: 13px;
         margin-bottom: 50px;
@@ -148,11 +148,12 @@
 
 
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 425px) {
     .techs {
         padding-right: 55px;
         padding-left: 55px;
         padding-bottom: 91px;
+        width: 178px;
     }
 }
 

@@ -6,7 +6,7 @@
 
 .me__info_text {
     display: flex;
-    flex-direction: column;;
+    flex-direction: column;
 }
 
 .me__info_text_title {
@@ -55,6 +55,11 @@
     font-weight: 500;
     line-height: normal;
     margin-bottom: 100px;
+}
+
+.me__info_text_github:hover {
+    opacity: 0.55;
+    transition: 0.15s;
 }
 
 .me__photo {
@@ -144,7 +149,7 @@
     }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 425px) {
     .me__info_text_github {
         margin-bottom: 69px;
     }

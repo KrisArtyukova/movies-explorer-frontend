@@ -4,9 +4,9 @@ import CredentialsForm, { View } from '../../Components/СredentialsForm/Credent
 
 function Login() {
   return (
-    <section className="login">
+    <main className="login">
       <CredentialsForm view={View.Login} />
-    </section>
+    </main>
 
   );
 }

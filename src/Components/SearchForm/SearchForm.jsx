@@ -3,10 +3,10 @@ import './SearchForm.css';
 
 function SearchForm() {
   return (
-    <article className="search">
+    <section className="search">
       <div className="search__form">
         <div className="search__form-cont">
-          <input className="search__form_input" placeholder="Фильм" />
+          <input required className="search__form_input" placeholder="Фильм" />
         </div>
         <button className="search__form_button" type="button">Найти</button>
       </div>
@@ -17,7 +17,7 @@ function SearchForm() {
         </label>
         <p className="switch__text">Короткометражки</p>
       </div>
-    </article>
+    </section>
   );
 }
 

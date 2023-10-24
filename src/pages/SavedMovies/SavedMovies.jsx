@@ -8,12 +8,12 @@ import { MoviesPage } from '../../utils/constants';
 
 function SavedMovies() {
   return (
-    <section className="saved__movies">
+    <main className="saved__movies">
       <Header headerView={HeaderView.Authorized} colorMode={ColorMode.Light} />
       <SearchForm />
       <MoviesCardList page={MoviesPage.SavedMovies} />
       <Footer />
-    </section>
+    </main>
   );
 }
 

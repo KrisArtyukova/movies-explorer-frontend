@@ -1,5 +1,5 @@
 .portfolio {
-    margin-bottom: 90px;
+    margin-bottom: 88px;
 
 }
 
@@ -11,7 +11,7 @@
     line-height: 20px;
     margin: 0;
     padding: 0;
-    margin-bottom: 50px;
+    margin-bottom: 32px;
 }
 
 .portfolio__project {
@@ -24,9 +24,10 @@
 .portfolio__project_item {
     display: flex;
     justify-content: space-between;
+    align-items: baseline;
     flex-direction: row;
     border-bottom: solid 1px #E6E6E6;
-    margin-bottom: 20px;
+
 }
 
 .portfolio__project_item:last-child {
@@ -36,44 +37,52 @@
 }
 
 .portfolio__project_link {
+    height: 17px;
+}
+
+.portfolio__project_label {
     text-decoration: none;
     color: inherit;
     font-family: Inter;
     font-size: 30px;
     font-style: normal;
     font-weight: 400;
-    line-height: 50px; /* 166.667% */
+    line-height: 89px;/* 166.667% */
     letter-spacing: -1.2px;
-    padding-bottom: 19px;
+    margin: 0;
+
+}
+
+.portfolio__project_label:hover {
+    opacity: 0.55;
+    transition: 0.15s;
 }
 
 .portfolio__project_img {
     width: 18px;
     box-sizing: border-box;
     border-style: none;
-    padding-bottom: 8px;
     margin-right: 5px;
 }
 
 @media screen and (max-width: 768px) {
     .portfolio__project_img {
         width: 19px;
-        padding-bottom: 14px;
         margin-right: 5px;
     }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 425px) {
     .portfolio__project_img {
         width: 12px;
-        padding-bottom: 21px;
-        margin-right: 4px;
+        padding-bottom: 2px;
+        margin-right: 5px;
     }
 }
 
 @media screen and (max-width: 768px) {
     .portfolio__title {
-        margin-bottom: 50px;
+        margin-bottom: 32px;
     }
 }
 
@@ -90,29 +99,35 @@
     }
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 425px) {
     .portfolio__project {
-        padding-bottom: 59px;
-    }
-}
-
-@media screen and (max-width: 320px) {
-    .portfolio__project {
-        padding-bottom: 39px;
+        padding-bottom: 41px;
     }
 }
 
 @media screen and (max-width: 768px) {
-    .portfolio__project_link {
+    .portfolio__project_label {
         font-size: 28px;
         letter-spacing: -1.12px;
     }
 }
 
-@media screen and (max-width: 767px) {
-    .portfolio__project_link {
-        font-size: 18px;
-        line-height: 28px; /* 155.556% */
+@media screen and (max-width: 530px) {
+    .portfolio__project_label {
+        font-size: 21px;
         letter-spacing: -0.72px;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .portfolio__title {
+        margin-bottom: 21px;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .portfolio__project_label {
+        line-height: 67px;
+        font-size: 18px;
     }
 }

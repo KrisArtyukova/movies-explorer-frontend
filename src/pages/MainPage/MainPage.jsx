@@ -10,7 +10,7 @@ import Portfolio from '../../Components/Portfolio/Portfolio';
 
 function MainPage() {
   return (
-    <div className="main-page">
+    <main className="main-page">
       <Header headerView={HeaderView.NotAuthorized} colorMode={ColorMode.Dark} />
       <Promo />
       <div className="page-container">
@@ -22,7 +22,7 @@ function MainPage() {
         <Portfolio />
       </div>
       <Footer />
-    </div>
+    </main>
   );
 }
 

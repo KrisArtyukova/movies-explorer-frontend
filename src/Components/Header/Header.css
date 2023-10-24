@@ -1,9 +1,16 @@
 .header {
+  width: 100%;
+}
+
+.header__container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 100%;
+  max-width: 1280px;
   max-height: 74px;
+  margin: 0 auto;
+  padding-right: 70px;
+  padding-left: 70px;
 }
 
 .header_dark {
@@ -19,8 +26,12 @@
   height: 38px;
   margin-bottom: 18px;
   margin-top: 18px;
-  margin-left: 70px;
   padding: 0;
+}
+
+.header__logo:hover {
+  opacity: 0.55;
+  transition: 0.15s;
 }
 
 .header__navigation {
@@ -28,9 +39,7 @@
   flex-direction: row;
   justify-content: space-between;;
   align-items: center;
-  width: 53%;
-  padding-right: 70px;
-
+  width: 59%;
 }
 
 .header__navigation-container {
@@ -53,6 +62,12 @@
   font-style: normal;
   font-weight: 500;
   line-height: 18px;
+  text-decoration: none;
+}
+
+.header__navigation-container_films:hover {
+  opacity: 0.55;
+  transition: 0.15s;
 }
 
 .header__navigation-container_saved {
@@ -70,12 +85,17 @@
   font-style: normal;
   font-weight: 400;
   line-height: 18px;
+  text-decoration: none;
+}
+
+.header__navigation-container_saved:hover {
+  opacity: 0.55;
+  transition: 0.15s;
 }
 
 .header__btn {
   display: flex;
   align-items: center;
-  margin-right: 70px;
 }
 
 .header__btn-reg {
@@ -95,6 +115,11 @@
   font-weight: 500;
   line-height: 16px;
   text-decoration: none;
+}
+
+.header__btn-reg:hover {
+  opacity: 0.55;
+  transition: 0.15s;
 }
 
 .header__btn-in {
@@ -119,6 +144,11 @@
   cursor: pointer;
 }
 
+.header__btn-in:hover {
+  opacity: 0.55;
+  transition: 0.15s;
+}
+
 .header__burger {
   width: 44px;
   height: 44px;
@@ -131,9 +161,18 @@
   margin-right: 30px;
 }
 
+@media screen and (max-width: 425px) {
+  .header__burger {
+    width: 41px;
+    height: 38px;
+    margin-right: 14px;
+  }
+}
+
 @media screen and (max-width: 768px) {
-  .header {
+  .header__container {
     max-width: 768px;
+    padding: 0;
   }
 }
 
@@ -149,34 +188,30 @@
   }
 }
 
-@media screen and (max-width: 320px) {
-  .header {
-    max-width: 320px;
-  }
-}
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 425px) {
   .header__logo {
     margin-left: 14px;
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 425px) {
   .header__btn {
     margin-right: 14px;
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 425px) {
   .header__btn-reg {
     margin-right: 14px;
     font-size: 10px;
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 425px) {
   .header__btn-in {
     min-width: 54px;
+    height: 26px;
     min-height: 26px;
     font-size: 10px;
   }

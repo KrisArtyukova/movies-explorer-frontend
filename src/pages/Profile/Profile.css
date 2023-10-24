@@ -107,6 +107,7 @@
 .profile__btn {
     display: flex;
     flex-direction: column;
+    margin-top: 220px;
 }
 
 .profile__btn_edit {
@@ -122,6 +123,11 @@
     font-weight: 400;
     line-height: normal;
     margin-bottom: 16px;
+}
+
+.profile__btn_edit:hover {
+    opacity: 0.55;
+    transition: 0.15s;
 }
 
 @media screen and (max-width: 320px) {
@@ -142,6 +148,11 @@
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+}
+
+.profile__btn_exit:hover {
+    opacity: 0.55;
+    transition: 0.15s;
 }
 
 @media screen and (max-width: 320px) {

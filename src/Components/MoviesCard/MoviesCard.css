@@ -8,9 +8,16 @@
     }
 }
 
+@media screen and (max-width: 320px) {
+    .card {
+        width: 300px;
+    }
+}
+
+
 .card__img {
     width: 100%;
-    padding-bottom: 7px;
+    padding-bottom: 11px;
 }
 
 @media screen and (max-width: 768px) {
@@ -21,7 +28,7 @@
 
 @media screen and (max-width: 320px) {
     .card__img {
-        padding-bottom: 6px;
+        padding-bottom: 11px;
     }
 }
 
@@ -47,7 +54,7 @@
 
 @media screen and (max-width: 768px) {
     .card__description_text {
-        padding-bottom: 23px;
+        padding-bottom: 31px;
     }
 }
 

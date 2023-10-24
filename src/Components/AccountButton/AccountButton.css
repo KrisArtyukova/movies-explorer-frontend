@@ -15,12 +15,17 @@
     font-weight: 500;
     line-height: 12px;
     border-radius: 40px;
-    padding: 0 27px 0 0;
+    padding: 0 13px 0 0;
     background-color: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
     text-decoration: none;
+}
+
+.header__navigation_account-btn:hover {
+    opacity: 0.55;
+    transition: 0.15s;
 }
 
 .header__navigation_account-btn:after {
@@ -40,6 +45,11 @@
 
 .header__navigation_account-btn_dark {
     background-color: #2BE080;
+}
+
+.header__navigation_account-btn_dark:hover {
+    opacity: 0.55;
+    transition: 0.15s;
 }
 
 .header__navigation_account-btn_dark:after {

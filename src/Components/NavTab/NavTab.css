@@ -11,7 +11,7 @@
 .nav__text_item {
     display: flex;
     flex-direction: column;
-    width: 550px;
+    width: 50%;
 }
 
 .nav__text_item-title{
@@ -106,14 +106,14 @@
     line-height: 17px; /* 121.429% */
 }
 
-@media screen and (max-width: 420px) {
+@media screen and (max-width: 425px) {
     .nav__description-frontend {
         font-size: 11px;
         width: 65%;
     }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 425px) {
     .nav {
         padding-left: 4px;
     }
@@ -121,25 +121,31 @@
 
 @media screen and (max-width: 768px) {
     .nav__text {
-        flex-wrap: wrap;
-        gap: 30px;
+
+        gap: 35px;
         margin-bottom: 93px;
     }
 }
 
+@media screen and (max-width: 768px) {
+    .nav__text_item {
+        width: 47%;
+    }
+}
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 600px) {
+    .nav__text_item {
+        width: 45%;
+    }
+}
+
+
+@media screen and (max-width: 425px) {
     .nav__text {
         margin-bottom: 60px;
         margin-top: 61px;
         gap: 58px;
-
-    }
-}
-
-@media screen and (max-width: 1024px) {
-    .nav__text_item {
-        width: 319px;
+        flex-wrap: wrap;
     }
 }
 
@@ -149,7 +155,7 @@
     }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 425px) {
     .nav__text_item-title {
         font-size: 18px;
         letter-spacing: -0.72px;
@@ -164,7 +170,7 @@
     }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 425px) {
     .nav__text_item-description {
         width: 284px;
         font-size: 11px;
@@ -173,26 +179,26 @@
 }
 
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 425px) {
     .nav__time {
         height: 35px;
         margin-bottom: 9px;
     }
 }
 
-@media screen and (max-width: 420px) {
+@media screen and (max-width: 425px) {
     .nav__time_green {
         width: 35%;
     }
 }
 
-@media screen and (max-width: 420px) {
+@media screen and (max-width: 425px) {
     .nav__time_gray {
         width: 65%;
     }
 }
 
-@media screen and (max-width: 420px) {
+@media screen and (max-width: 425px) {
     .nav__time-text {
         font-size: 11px;
         margin-bottom: 11px;
@@ -206,15 +212,21 @@
     }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 425px) {
     .nav__description {
         margin-bottom: 62px;
     }
 }
 
-@media screen and (max-width: 420px) {
+@media screen and (max-width: 425px) {
     .nav__description-backend {
         font-size: 11px;
         width: 35%;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .nav__text_item {
+        width: 100%;
     }
 }

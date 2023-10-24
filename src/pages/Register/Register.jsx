@@ -4,9 +4,9 @@ import CredentialsForm, { View } from '../../Components/СredentialsForm/Credent
 
 function Register() {
   return (
-    <section className="register">
+    <main className="register">
       <CredentialsForm view={View.Register} />
-    </section>
+    </main>
   );
 }
 

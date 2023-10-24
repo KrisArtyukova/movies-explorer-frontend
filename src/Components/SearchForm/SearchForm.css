@@ -52,6 +52,7 @@
     line-height: normal;
     margin-top: 70px;
     margin-bottom: 13px;
+    width: 100%;
 }
 
 @media screen and (max-width: 768px) {
@@ -104,6 +105,8 @@
     align-items: center;
 }
 
+
+
 @media screen and (max-width: 768px) {
     .switch {
         flex-direction: row-reverse;
@@ -134,9 +137,16 @@
 
 @media screen and (max-width: 768px) {
     .switch__text {
-        font-size: 11px;
-        padding-right: 13px;
+        font-size: 13px;
+        padding-right: 18px;
         padding-left: 0;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .switch__text {
+        font-size: 11px;
+
     }
 }
 
@@ -147,6 +157,11 @@
     height: 14px;
     position: relative;
     width: 34px;
+}
+
+.switch__label:hover {
+    opacity: 0.55;
+    transition: 0.15s;
 }
 
 .checkbox {

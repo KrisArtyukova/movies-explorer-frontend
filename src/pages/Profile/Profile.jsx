@@ -20,7 +20,7 @@ function Profile() {
           </div>
           <div className="profile__btn">
             <button className="profile__btn_edit" type="button">Редактировать</button>
-            <Link to="/" className="profile__btn_exit" type="button">Выйти из аккаунта</Link>
+            <Link to="/" className="profile__btn_exit">Выйти из аккаунта</Link>
           </div>
         </form>
       </section>

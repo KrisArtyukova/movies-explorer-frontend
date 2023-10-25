@@ -19,10 +19,10 @@ function FullSizeHeaderMenu() {
   return (
     <div className="header__navigation">
       <div className="header__navigation-container">
-        <Link to="/movies" className="header__navigation-container_films" type="button" aria-label="Фильмы">
+        <Link to="/movies" className="header__navigation-container_films" aria-label="Фильмы">
           Фильмы
         </Link>
-        <Link to="/saved-movies" className="header__navigation-container_saved" type="button" aria-label="Сохранённые фильмы">
+        <Link to="/saved-movies" className="header__navigation-container_saved" aria-label="Сохранённые фильмы">
           Сохранённые фильмы
         </Link>
       </div>

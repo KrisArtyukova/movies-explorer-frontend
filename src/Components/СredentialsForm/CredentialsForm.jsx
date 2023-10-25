@@ -56,11 +56,11 @@ function CredentialsForm({ view }) {
           ) : null}
           <div className="credentials__form_container">
             <label htmlFor="credentialsEmail" className="credentials__form_container-span">E-mail</label>
-            <input required name="credentialsEmail" placeholder="Введите E-mail" type="email" className="credentials__form_container-input" />
+            <input required name="credentialsEmail" id="credentialsEmail" placeholder="Введите E-mail" type="email" className="credentials__form_container-input" />
           </div>
           <div className="credentials__form_container credentials__form_container_error-message">
             <label htmlFor="credentialsPassword" className="credentials__form_container-span">Пароль</label>
-            <input minLength="3" maxLength="10" required name="credentialsPassword" placeholder="Пароль" type="password" className="credentials__form_container-input" />
+            <input minLength="3" maxLength="10" required name="credentialsPassword" id="credentialsPassword" placeholder="Пароль" type="password" className="credentials__form_container-input" />
           </div>
           <p className="credentials__form_container-description">Что-то пошло не так...</p>
         </form>

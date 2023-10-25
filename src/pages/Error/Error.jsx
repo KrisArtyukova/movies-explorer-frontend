@@ -10,11 +10,11 @@ function Error() {
         <p className="error__message_description">Страница не найдена</p>
       </div>
       <div className="error__btn">
-        <Link to="/" type="button" className="error__btn_back">Назад</Link>
+        <Link to="/" className="error__btn_back">Назад</Link>
       </div>
     </main>
 
   );
-}
+}``
 
 export default Error;

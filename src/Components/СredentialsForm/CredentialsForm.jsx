@@ -41,38 +41,36 @@ function CredentialsForm({ view }) {
   }
 
   return (
-    <div className="credentials">
-      <div className="credentials__header">
-        <Link to="/" className="credentials__header_link"><img src={logo} className="credentials__header_logo" alt="Логотип" /></Link>
-        <h1 className="credentials__header_title">{title}</h1>
-      </div>
-      <form className={formClass}>
-        {view === View.Register ? (
-          <>
+    <main>
+      <div className="credentials">
+        <div className="credentials__header">
+          <Link to="/" className="credentials__header_link"><img src={logo} className="credentials__header_logo" alt="Логотип" /></Link>
+          <h1 className="credentials__header_title">{title}</h1>
+        </div>
+        <form className={formClass}>
+          {view === View.Register ? (
             <div className="credentials__form_container">
               <label htmlFor="credentialsName" className="credentials__form_container-span">Имя</label>
               <input minLength="3" maxLength="10" required name="credentialsName" placeholder="Введите имя" type="name" className="credentials__form_container-input" />
             </div>
-            <div className="credentials__form_divider" />
-          </>
-        ) : null}
-        <div className="credentials__form_container">
-          <label htmlFor="credentialsEmail" className="credentials__form_container-span">E-mail</label>
-          <input required name="credentialsEmail" placeholder="Введите E-mail" type="email" className="credentials__form_container-input" />
-        </div>
-        <div className="credentials__form_divider" />
-        <div className="credentials__form_container">
-          <label htmlFor="credentialsPassword" className="credentials__form_container-span">Пароль</label>
-          <input minLength="3" maxLength="10" required name="credentialsPassword" placeholder="Пароль" type="password" className="credentials__form_container-input" />
-          <div className="credentials__form_divider credentials__form_divider_description" />
+          ) : null}
+          <div className="credentials__form_container">
+            <label htmlFor="credentialsEmail" className="credentials__form_container-span">E-mail</label>
+            <input required name="credentialsEmail" placeholder="Введите E-mail" type="email" className="credentials__form_container-input" />
+          </div>
+          <div className="credentials__form_container credentials__form_container_error-message">
+            <label htmlFor="credentialsPassword" className="credentials__form_container-span">Пароль</label>
+            <input minLength="3" maxLength="10" required name="credentialsPassword" placeholder="Пароль" type="password" className="credentials__form_container-input" />
+          </div>
           <p className="credentials__form_container-description">Что-то пошло не так...</p>
+        </form>
+        <div className="credentials__container">
+          <button type="submit" className="credentials__container_btn">{buttonText}</button>
+          {footerContent}
         </div>
-      </form>
-      <div className="credentials__container">
-        <button type="submit" className="credentials__container_btn">{buttonText}</button>
-        {footerContent}
       </div>
-    </div>
+    </main>
+
   );
 }
 

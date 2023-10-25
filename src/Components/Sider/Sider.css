@@ -13,7 +13,7 @@
 .sider__content {
     background-color: #FFFFFF;
     width: 50%;
-    height: 95%;
+    height: 100%;
     padding: 22px;
     padding-bottom: 90px;
 }
@@ -42,21 +42,22 @@
     }
 }
 
-
 .sider__content__menu-container {
     width: 100%;
-    height: 83%;
+    height: 72%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
     padding-top: 105px;
+    margin-bottom: 90px;
 }
 
 @media screen and (max-width: 425px) {
     .sider__content__menu-container {
         padding-top: 101px;
-        height: 72%;
+        height: 78%;
+        margin-bottom: 46px;
     }
 }
 
@@ -78,9 +79,7 @@
     color: #000;
     text-align: center;
     font-feature-settings: 'clig' off, 'liga' off;
-    font-family: Inter;
     font-size: 18px;
-    font-style: normal;
     font-weight: 500;
     line-height: normal;
     background-color: transparent;

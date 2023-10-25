@@ -10,7 +10,7 @@ import Portfolio from '../../Components/Portfolio/Portfolio';
 
 function MainPage() {
   return (
-    <main className="main-page">
+    <main className="main">
       <Header headerView={HeaderView.NotAuthorized} colorMode={ColorMode.Dark} />
       <Promo />
       <div className="page-container">

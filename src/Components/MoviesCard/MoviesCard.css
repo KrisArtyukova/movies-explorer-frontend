@@ -8,9 +8,15 @@
     }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 425px) {
     .card {
         width: 300px;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .cars__more_btn {
+        width: 270px;
     }
 }
 
@@ -31,7 +37,6 @@
         padding-bottom: 11px;
     }
 }
-
 
 .card__description {
     display: flex;
@@ -58,15 +63,24 @@
     }
 }
 
+@media screen and (max-width: 320px)
+.card__description_text {
+    padding-bottom: 30px;
+}
+
 .card__description_like {
     width: 24px;
     height: 24px;
-    padding-bottom: 25px;
     background-color: transparent;
     border: none;
     cursor: pointer;
     padding-inline: 0;
     padding-block: 0;
+}
+
+.card__description_like:hover {
+    opacity: 0.55;
+    transition: 0.15s;
 }
 
 @media screen and (max-width: 768px) {
@@ -77,7 +91,6 @@
 
 .card__duration {
     color: #A0A0A0;
-    font-family: Inter;
     font-size: 11px;
     font-style: normal;
     font-weight: 400;

@@ -8,12 +8,12 @@ function Footer() {
       <div className="footer__info">
         <p className="footer__copyright">© 2023 </p>
         <nav className="footer__btn">
-          <button className="footer__btn-yp" type="button" aria-label="Яндекс.Практикум">
+          <a href="https://practicum.yandex.ru/frontend-developer/?from=catalog" className="footer__btn-yp" target="_blank" type="button" aria-label="Яндекс.Практикум" rel="noreferrer">
             Яндекс.Практикум
-          </button>
-          <button className="footer__btn-gh" type="button" aria-label="GitHub">
+          </a>
+          <a href="https://github.com/KrisArtyukova" className="footer__btn-gh" target="_blank" type="button" aria-label="GitHub" rel="noreferrer">
             GitHub
-          </button>
+          </a>
         </nav>
       </div>
     </footer>

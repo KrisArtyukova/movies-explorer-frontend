@@ -45,9 +45,7 @@
     all: unset;
     color: #A0A0A0;
     font-feature-settings: 'clig' off, 'liga' off;
-    font-family: Inter;
     font-size: 28px;
-    font-style: normal;
     font-weight: 500;
     line-height: normal;
     margin-top: 70px;
@@ -82,14 +80,19 @@
     background: #3456F3;
     color: #FFF;
     text-align: center;
-    font-family: Inter;
     font-size: 11px;
-    font-style: normal;
     font-weight: 500;
     line-height: 18px;
     margin-top: 70px;
     margin-bottom: 13px;
+    cursor: pointer;
 }
+
+.search__form_button:hover {
+    opacity: 0.55;
+    transition: 0.15s;
+}
+
 
 @media screen and (max-width: 768px) {
     .search__form_button {
@@ -127,9 +130,7 @@
 .switch__text {
     margin: 0;
     color: #000;
-    font-family: Inter;
     font-size: 13px;
-    font-style: normal;
     font-weight: 400;
     line-height: 18px;
     padding-left: 14px;

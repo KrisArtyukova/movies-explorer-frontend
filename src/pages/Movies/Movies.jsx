@@ -8,12 +8,14 @@ import { MoviesPage } from '../../utils/constants';
 
 function Movies() {
   return (
-    <main className="movies">
+    <>
       <Header headerView={HeaderView.Authorized} colorMode={ColorMode.Light} />
-      <SearchForm />
-      <MoviesCardList page={MoviesPage.Movies} />
+      <main className="movies">
+        <SearchForm />
+        <MoviesCardList page={MoviesPage.Movies} />
+      </main>
       <Footer />
-    </main>
+    </>
   );
 }
 

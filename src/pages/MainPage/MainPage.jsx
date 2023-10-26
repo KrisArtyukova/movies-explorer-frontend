@@ -10,19 +10,22 @@ import Portfolio from '../../Components/Portfolio/Portfolio';
 
 function MainPage() {
   return (
-    <main className="main">
+    <>
       <Header headerView={HeaderView.NotAuthorized} colorMode={ColorMode.Dark} />
-      <Promo />
-      <div className="page-container">
-        <NavTab />
-      </div>
-      <AboutProject />
-      <div className="page-container">
-        <AboutMe />
-        <Portfolio />
-      </div>
+      <main className="main__page">
+        <Promo />
+        <div className="page-container">
+          <NavTab />
+        </div>
+        <AboutProject />
+        <div className="page-container">
+          <AboutMe />
+          <Portfolio />
+        </div>
+      </main>
       <Footer />
-    </main>
+    </>
+
   );
 }
 

@@ -17,7 +17,7 @@ function App() {
 
   return (
     <AppContext.Provider value={{ siderIsOpen, setSiderIsOpen }}>
-      <main className="App">
+      <div className="App">
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="/movies" element={<Movies />} />
@@ -28,7 +28,7 @@ function App() {
           <Route path="*" element={<Error />} />
         </Routes>
         {mediaQueryList768.matches ? <Sider /> : null}
-      </main>
+      </div>
     </AppContext.Provider>
 
   );

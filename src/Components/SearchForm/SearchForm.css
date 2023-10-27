@@ -32,7 +32,7 @@
 
 @media screen and (max-width: 320px) {
     .search__form {
-        margin-bottom: 37px;
+        margin-bottom: 38px;
         align-items: center;
     }
 }
@@ -68,7 +68,7 @@
 @media screen and (max-width: 320px) {
     .search__form_input {
         font-size: 18px;
-        margin-top: 82px;
+        margin-top: 85px;
     }
 }
 
@@ -133,7 +133,7 @@
     font-size: 13px;
     font-weight: 400;
     line-height: 18px;
-    padding-left: 14px;
+    padding-left: 16px;
 }
 
 @media screen and (max-width: 768px) {

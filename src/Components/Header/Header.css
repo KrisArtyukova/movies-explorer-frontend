@@ -25,8 +25,8 @@
 .header__logo {
   width: 38px;
   height: 38px;
-  margin-bottom: 18px;
-  margin-top: 18px;
+  margin-bottom: 17px;
+  margin-top: 20px;
   padding: 0;
 }
 
@@ -55,7 +55,7 @@
   font: inherit;
   cursor: pointer;
   outline: inherit;
-  padding-right: 16px;
+  padding-right: 14px;
   color: #000;
   text-align: right;
   font-size: 13px;
@@ -156,6 +156,10 @@
   margin-right: 30px;
 }
 
+.header__link_container {
+  width: 101px;
+}
+
 @media screen and (max-width: 425px) {
   .header__burger {
     width: 41px;
@@ -174,6 +178,8 @@
 @media screen and (max-width: 768px) {
   .header__logo {
     margin-left: 30px;
+    margin-bottom: 16px;
+    margin-top: 19px;
   }
 }
 

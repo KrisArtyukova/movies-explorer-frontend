@@ -1,5 +1,6 @@
 .profile {
     width: 1280px;
+    max-width: 100%;
 }
 
 .profile__title {
@@ -40,7 +41,7 @@
     }
 }
 
-@media screen and (max-width: 420px) {
+@media screen and (max-width: 465px) {
     .profile__form {
         margin-left: 30px;
         margin-right: 30px;
@@ -105,7 +106,7 @@
 .profile__btn {
     display: flex;
     flex-direction: column;
-    margin-top: 220px;
+    margin-top: 222px;
 }
 
 @media screen and (max-width: 768px) {
@@ -130,7 +131,7 @@
     font-size: 14px;
     font-weight: 400;
     line-height: normal;
-    margin-bottom: 16px;
+    margin-bottom: 15px;
     cursor: pointer;
 }
 

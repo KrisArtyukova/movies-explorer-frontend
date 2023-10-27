@@ -4,10 +4,29 @@
     flex-direction: column;
     max-width: 100%;
     background-color: #F5F5F5;
-    margin-bottom: 110px;
-    padding-top: 101px;
+    margin-bottom: 108px;
+    padding-top: 102px;
     padding-left: 70px;
     padding-right: 70px;
+}
+
+@media screen and (max-width: 768px) {
+    .project {
+        padding-top: 91px;
+        margin-bottom: 91px;
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .project {
+        background-color: #FFF;
+        padding-top: 76px;
+        margin-bottom: 50px;
+        padding-left: 18px;
+        padding-right: 18px;
+    }
 }
 
 .project__container {
@@ -43,7 +62,7 @@
     padding: 0;
     gap: 10px;
     margin: 0 auto;
-    padding-bottom: 102px;
+    padding-bottom: 105px;
 }
 
 .techs__name {
@@ -65,24 +84,7 @@
 }
 
 
-@media screen and (max-width: 768px) {
-    .project {
-        padding-top: 91px;
-        margin-bottom: 91px;
-        padding-left: 50px;
-        padding-right: 50px;
-    }
-}
 
-@media screen and (max-width: 425px) {
-    .project {
-        background-color: #FFF;
-        padding-top: 77px;
-        margin-bottom: 50px;
-        padding-left: 15px;
-        padding-right: 15px;
-    }
-}
 
 @media screen and (max-width: 768px) {
     .project__title {
@@ -101,6 +103,7 @@
 @media screen and (max-width: 425px) {
     .project__title {
         margin-top: 49px;
+        margin-right: 1px;
     }
 
     .techs {
@@ -132,7 +135,7 @@
     .project__subtitle {
         margin-top: 13px;
         margin-bottom: 50px;
-        width: 276px;
+        width: 267px;
     }
 }
 
@@ -147,8 +150,8 @@
 
 @media screen and (max-width: 425px) {
     .techs {
-        padding-right: 55px;
-        padding-left: 55px;
+        padding-right: 44px;
+        padding-left: 43px;
         padding-bottom: 91px;
         width: 178px;
     }

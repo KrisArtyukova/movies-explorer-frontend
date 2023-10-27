@@ -3,7 +3,7 @@
     grid-template-columns: repeat(auto-fill, 270px);
     width: calc(100% - 70px - 70px);
     column-gap: 20px;
-    row-gap: 38px;
+    row-gap: 36px;
     margin: 0 auto;
     margin-top: 118px;
     margin-bottom: 11px;
@@ -17,7 +17,7 @@
         grid-template-columns: repeat(auto-fill, 339px);
         width: calc(100% - 30px - 30px);
         row-gap: 29px;
-        column-gap: 29px;
+        column-gap: 30px;
         margin-top: 80px;
     }
 }
@@ -25,8 +25,8 @@
 @media screen and (max-width: 425px) {
     .cards__container {
         grid-template-columns: repeat(auto-fill, 300px);
-        width: calc(100% - 10px - 10px);
-        row-gap: 29px;
+        width: 100%;
+        row-gap: 32px;
         margin-top: 40px;
     }
 }
@@ -40,7 +40,15 @@
 
 @media screen and (max-width: 768px) {
     .cards__more {
-        padding-top: 47px;
+        padding-top: 52px;
+        padding-bottom: 115px;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .cards__more {
+        padding-top: 52px;
+        padding-bottom: 133px;
     }
 }
 
@@ -49,8 +57,8 @@
     color: inherit;
     border: none;
     padding: 0;
-    width: 320px;
-    height: 36px;
+    width: 319px;
+    height: 33px;
     border-radius: 6px;
     background: #F9F9F9;
     color: #000;

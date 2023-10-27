@@ -44,7 +44,7 @@
 
 .sider__content__menu-container {
     width: 100%;
-    height: 72%;
+    height: 67%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -56,7 +56,7 @@
 @media screen and (max-width: 425px) {
     .sider__content__menu-container {
         padding-top: 101px;
-        height: 78%;
+        height: 68%;
         margin-bottom: 46px;
     }
 }
@@ -65,7 +65,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 28px;
+    gap: 29px;
 }
 
 @media screen and (max-width: 425px) {

@@ -17,7 +17,7 @@ export const ColorMode = {
 
 function FullSizeHeaderMenu() {
   return (
-    <div className="header__navigation">
+    <>
       <div className="header__navigation-container">
         <Link to="/movies" className="header__navigation-container_films" aria-label="Фильмы">
           Фильмы
@@ -27,7 +27,7 @@ function FullSizeHeaderMenu() {
         </Link>
       </div>
       <AccountButton />
-    </div>
+    </>
   );
 }
 
@@ -99,7 +99,7 @@ function Header({ headerView, colorMode }) {
   return (
     <header className={headerMainClass}>
       <div className="header__container">
-        <Link to="/"><img src={logo} className="header__logo" alt="Логотип" /></Link>
+        <Link to="/" className="header__link_container"><img src={logo} className="header__logo" alt="Логотип" /></Link>
         {content}
       </div>
     </header>

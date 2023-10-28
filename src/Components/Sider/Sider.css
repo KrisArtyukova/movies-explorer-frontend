@@ -1,0 +1,111 @@
+.sider {
+    display: flex;
+    justify-content: flex-end;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    right: 0;
+    top: 0;
+    z-index: 1;
+}
+
+.sider__content {
+    background-color: #FFFFFF;
+    width: 50%;
+    height: 100%;
+    padding: 22px;
+    padding-bottom: 90px;
+}
+
+.sider__content__close-button-container {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.sider__content__close-button {
+    width: 33px;
+    height: 33px;
+    background-image: url(../../images/sider_close_btn.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: transparent;
+    border: none;
+}
+
+@media screen and (max-width: 425px) {
+    .sider__content__close-button {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+.sider__content__menu-container {
+    width: 100%;
+    height: 67%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 105px;
+    margin-bottom: 90px;
+}
+
+@media screen and (max-width: 425px) {
+    .sider__content__menu-container {
+        padding-top: 101px;
+        height: 68%;
+        margin-bottom: 46px;
+    }
+}
+
+.sider__content__menu-container__links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 29px;
+}
+
+@media screen and (max-width: 425px) {
+    .sider__content__menu-container__links {
+        gap: 25px;
+    }
+}
+
+.sider__content__menu-container__links__link {
+    margin: 0;
+    color: #000;
+    text-align: center;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: normal;
+    background-color: transparent;
+    border: none;
+    text-decoration: none;
+}
+
+.sider__content__menu-container__links__link:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+    .sider__content {
+        width: 62%;
+        padding: 21px;
+        padding-top: 21px;
+        padding-right: 22px;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .sider__content {
+        width: 100%;
+        padding: 14px;
+        padding-top: 14px;
+        padding-right: 14px;
+    }
+}

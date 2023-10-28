@@ -1,0 +1,81 @@
+.cards__container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 270px);
+    width: calc(100% - 70px - 70px);
+    column-gap: 20px;
+    row-gap: 36px;
+    margin: 0 auto;
+    margin-top: 118px;
+    margin-bottom: 11px;
+    list-style-type: none;
+    padding: 0;
+    justify-content: center;
+}
+
+@media screen and (max-width: 768px) {
+    .cards__container {
+        grid-template-columns: repeat(auto-fill, 339px);
+        width: calc(100% - 30px - 30px);
+        row-gap: 29px;
+        column-gap: 30px;
+        margin-top: 80px;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .cards__container {
+        grid-template-columns: repeat(auto-fill, 300px);
+        width: 100%;
+        row-gap: 32px;
+        margin-top: 40px;
+    }
+}
+
+.cards__more {
+    width: 100%;
+    padding: 50px 0 79px 0;
+    margin: 0 auto;
+    text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+    .cards__more {
+        padding-top: 52px;
+        padding-bottom: 115px;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .cards__more {
+        padding-top: 52px;
+        padding-bottom: 133px;
+    }
+}
+
+.cars__more_btn {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    width: 319px;
+    height: 33px;
+    border-radius: 6px;
+    background: #F9F9F9;
+    color: #000;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: normal;
+    cursor: pointer;
+}
+
+.cars__more_btn:hover {
+    opacity: 0.55;
+    transition: 0.15s;
+}
+
+@media screen and (max-width: 320px) {
+    .cars__more_btn {
+        width: 240px;
+    }
+}

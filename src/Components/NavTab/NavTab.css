@@ -1,0 +1,254 @@
+.nav__text {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    gap: 40px;
+    margin: 0;
+    margin-top: 70px;
+    margin-bottom: 110px;
+}
+
+.nav__text_item {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.nav__text_item-title{
+    margin: 0;
+    margin-bottom: 26px;
+    color: #000;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.8px;
+}
+
+.nav__text_item-description{
+    margin: 0;
+    color: #000;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px; /* 142.857% */
+}
+
+.nav__time {
+    display: flex;
+    height: 36px;
+    width: 100%;
+    flex-wrap: wrap;
+    margin-bottom: 14px;
+}
+
+@media screen and (max-width: 768px) {
+    .nav__time {
+        height: 36px;
+    }
+}
+
+.nav__time_green {
+    width: 20%;
+    background-color: #2BE080;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.nav__time_gray{
+    background-color: #F2F2F2;
+    width: 80%;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.nav__time-text {
+    margin: 0;
+    padding: 0;
+    color: #000;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: normal;
+    margin-bottom: 9px;
+    margin-top: 9px;
+}
+
+.nav__description {
+    display: flex;
+    width: 100%;
+    margin-bottom: 109px;
+}
+
+.nav__description-backend {
+    width: 20%;
+    margin: 0;
+    padding: 0;
+    color: #A0A0A0;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17px; /* 121.429% */
+}
+
+.nav__description-frontend{
+    width: 80%;
+    margin: 0;
+    padding: 0;
+    color: #A0A0A0;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17px; /* 121.429% */
+}
+
+@media screen and (max-width: 768px) {
+    .nav__description-backend {
+        width: 21%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .nav__description-frontend {
+        width: 79%;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .nav__description-frontend {
+        font-size: 11px;
+        width: 65%;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .nav {
+        padding-left: 4px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .nav__text {
+        gap: 35px;
+        margin-bottom: 93px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .nav__text_item {
+        width: 47%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .nav__text_item {
+        width: 45%;
+    }
+}
+
+
+@media screen and (max-width: 425px) {
+    .nav__text {
+        margin-bottom: 60px;
+        margin-top: 61px;
+        gap: 57px;
+        flex-wrap: wrap;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .nav__text_item-title {
+        margin-bottom: 22px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .nav__time_green {
+        width: 21%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .nav__time_gray {
+        width: 79%;
+    }
+}
+
+
+@media screen and (max-width: 425px) {
+    .nav__text_item-title {
+        font-size: 18px;
+        letter-spacing: -0.72px;
+        margin-bottom: 17px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .nav__text_item-description {
+        font-size: 12px;
+        line-height: 18px;
+    }
+}
+
+@media screen and (max-width: 430px) {
+    .nav__text_item-description {
+        font-size: 11px;
+        line-height: 16px;
+        width: 100%;
+    }
+}
+
+
+@media screen and (max-width: 425px) {
+    .nav__time {
+        height: 35px;
+        margin-bottom: 9px;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .nav__time_green {
+        width: 35%;
+        height: 35px;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .nav__time_gray {
+        width: 65%;
+        height: 35px;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .nav__time-text {
+        font-size: 11px;
+        margin-bottom: 11px;
+        margin-top: 11px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .nav__description {
+        margin-bottom: 90px;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .nav__description {
+        margin-bottom: 62px;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .nav__description-backend {
+        font-size: 11px;
+        width: 35%;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .nav__text_item {
+        width: 100%;
+    }
+}

@@ -4,6 +4,8 @@ export const MoviesPage = {
 };
 
 export const USER_TOKEN = 'userToken';
+export const SavedMoviesState = 'savedMoviesState';
+export const SavedSearch = 'savedSearch';
 
 export const toastOptions = {
   success: {

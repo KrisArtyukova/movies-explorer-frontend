@@ -13,9 +13,9 @@ function Movies() {
   return (
     <>
       <Header headerView={HeaderView.Authorized} colorMode={ColorMode.Light} />
-      <main className="movies">
+      <main className={movies.length > 4 ? 'movies' : 'movieFull'}>
         <MoviesContext.Provider value={{ movies, setMovies }}>
-          <SearchForm />
+          <SearchForm page={MoviesPage.Movies} />
           <MoviesCardList page={MoviesPage.Movies} />
         </MoviesContext.Provider>
       </main>

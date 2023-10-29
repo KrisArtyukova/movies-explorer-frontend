@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './CredentialsForm.css';
 import { Link } from 'react-router-dom';
 import logo from '../../images/logo.svg';
+import AppContext from '../../contexts/AppContext';
 
 export const View = {
   Login: 'Login',
   Register: 'Register',
 };
 function CredentialsForm({ view, onRegistrate, onLogin }) {
+  const appContext = React.useContext(AppContext);
+
   let title = '';
   let buttonText = '';
   let footerContent = null;
@@ -51,6 +54,8 @@ function CredentialsForm({ view, onRegistrate, onLogin }) {
     if (view === View.Register) onRegistrate(formValues);
   };
 
+  useEffect(() => () => appContext.setCredentialsError(undefined), []);
+
   return (
     <div className="credentials">
       <div className="credentials__header">
@@ -72,7 +77,7 @@ function CredentialsForm({ view, onRegistrate, onLogin }) {
           <label htmlFor="credentialsPassword" className="credentials__form_container-span">Пароль</label>
           <input minLength="3" maxLength="10" required name="credentialsPassword" id="credentialsPassword" placeholder="Пароль" type="password" className="credentials__form_container-input" />
         </div>
-        <p className="credentials__form_container-description">Что-то пошло не так...</p>
+        <p className="credentials__form_container-description">{appContext.credentialsError?.message || appContext.credentialsError?.status}</p>
       </form>
       <div className="credentials__container">
         <button type="submit" className="credentials__container_btn" form="credentialsForm">{buttonText}</button>

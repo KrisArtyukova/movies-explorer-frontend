@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import logo from '../../images/logo.svg';
 import './Header.css';
 import AccountButton from '../AccountButton/AccountButton';
@@ -16,13 +16,30 @@ export const ColorMode = {
 };
 
 function FullSizeHeaderMenu({ colorMode }) {
+  const location = useLocation();
+  const classes = colorMode === ColorMode.Light ? 'header__navigation-container-links' : 'header__navigation-container-links-light';
+  const modificators = colorMode === ColorMode.Light ? 'header__navigation-container-links-active' : 'header__navigation-container-links-light-active';
+  let moviesLinkClass = classes;
+  let savedMoviesLinkClass = classes;
+
+  switch (location.pathname) {
+    case '/movies':
+      moviesLinkClass = `${moviesLinkClass} ${modificators}`;
+      break;
+    case '/saved-movies':
+      savedMoviesLinkClass = `${moviesLinkClass} ${modificators}`;
+      break;
+    default:
+      break;
+  }
+
   return (
     <>
       <div className="header__navigation-container">
-        <Link to="/movies" className="header__navigation-container_films" aria-label="Фильмы">
+        <Link to="/movies" className={moviesLinkClass} aria-label="Фильмы">
           Фильмы
         </Link>
-        <Link to="/saved-movies" className="header__navigation-container_saved" aria-label="Сохранённые фильмы">
+        <Link to="/saved-movies" className={savedMoviesLinkClass} aria-label="Сохранённые фильмы">
           Сохранённые фильмы
         </Link>
       </div>
@@ -31,11 +48,12 @@ function FullSizeHeaderMenu({ colorMode }) {
   );
 }
 
-function HeaderBurger() {
+function HeaderBurger({ colorMode }) {
   const appContext = React.useContext(AppContext);
+  const className = colorMode === ColorMode.Light ? 'header__burger' : 'header__burger_light';
 
   return (
-    <button type="button" className="header__burger" onClick={() => appContext.setSiderIsOpen(true)} />
+    <button type="button" className={className} onClick={() => appContext.setSiderIsOpen(true)} />
   );
 }
 
@@ -46,7 +64,7 @@ function Header({ headerView, colorMode }) {
 
   function handleResize() {
     if (mediaQueryList768.matches) {
-      setContent(<HeaderBurger />);
+      setContent(<HeaderBurger colorMode={colorMode} />);
     } else {
       setContent(<FullSizeHeaderMenu colorMode={colorMode} />);
     }
@@ -56,7 +74,7 @@ function Header({ headerView, colorMode }) {
     switch (headerView) {
       case HeaderView.Authorized:
         if (mediaQueryList768.matches) {
-          setContent(<HeaderBurger />);
+          setContent(<HeaderBurger colorMode={colorMode} />);
         } else {
           setContent(<FullSizeHeaderMenu colorMode={colorMode} />);
         }

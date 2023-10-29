@@ -13,7 +13,9 @@ import Sider from './Components/Sider/Sider';
 import AppContext from './contexts/AppContext';
 import CurrentUserContext from './contexts/CurrentUserContext';
 import ProtectedRoute from './Components/ProtectedRoute/ProtectedRoute';
-import { toastOptions, USER_TOKEN } from './utils/constants';
+import {
+  SavedMoviesState, SavedSearch, toastOptions, USER_TOKEN,
+} from './utils/constants';
 import mainApi from './utils/MainApi';
 import Preloader from './Components/Preloader/Preloader';
 
@@ -21,6 +23,8 @@ function App() {
   const mediaQueryList768 = window.matchMedia('(max-width: 768px)');
   const [siderIsOpen, setSiderIsOpen] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
+  const [credentialsError, setCredentialsError] = useState(undefined);
+  const [moviesError, setMoviesError] = useState(undefined);
   const [loading, setLoading] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
   const navigate = useNavigate();
@@ -44,12 +48,12 @@ function App() {
   function onLoginUser({ password, email }) {
     mainApi.login({ password, email })
       .then((response) => {
-        toast.success('Вы вошли!', { icon: '✅' });
         localStorage.setItem(USER_TOKEN, response.token);
         handleLogin(response);
       })
       .catch((error) => {
         toast.error(`Произошла ошибка при входе! ${error}`, { icon: '❌' });
+        setCredentialsError(error);
       });
   }
 
@@ -65,19 +69,30 @@ function App() {
       })
       .catch((error) => {
         setLoading(false);
+        setCredentialsError(error);
         toast.error(`Произошла ошибка при регистрации! ${error}`, { icon: '❌' });
       });
   }
 
   function logout() {
     localStorage.removeItem(USER_TOKEN);
+    localStorage.removeItem(SavedMoviesState);
+    localStorage.removeItem(SavedSearch);
     setLoggedIn(false);
     navigate('/');
   }
 
   return (
     <AppContext.Provider value={{
-      loggedIn, siderIsOpen, setSiderIsOpen, loading, setLoading,
+      loggedIn,
+      siderIsOpen,
+      setSiderIsOpen,
+      loading,
+      setLoading,
+      credentialsError,
+      setCredentialsError,
+      moviesError,
+      setMoviesError,
     }}
     >
       <CurrentUserContext.Provider value={{ currentUser, setCurrentUser }}>

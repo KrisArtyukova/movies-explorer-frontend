@@ -79,7 +79,8 @@ class MoviesApi {
 }
 
 const moviesApi = new MoviesApi({
-  baseUrl: 'http://localhost:3001/movies',
+  baseUrl: 'https://kris-diplom-backend.nomoredomainsrocks.ru/movies',
+  // baseUrl: 'http://localhost:3001/movies',
   headers: {
     'Content-Type': 'application/json',
   },

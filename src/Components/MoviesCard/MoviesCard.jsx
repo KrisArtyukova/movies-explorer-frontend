@@ -4,7 +4,7 @@ import activeLike from '../../images/heart_red.svg';
 import disablelike from '../../images/heart_gray.svg';
 import deleteImg from '../../images/delete.svg';
 import { MoviesPage } from '../../utils/constants';
-import getTimeFromMinutes from '../../utils/utils';
+import { getTimeFromMinutes } from '../../utils/utils';
 
 function MoviesCard({
   _id, title, page, imgAlt, image, duration, trailerLink, onLikeClick, movieId, likedMoviesId,

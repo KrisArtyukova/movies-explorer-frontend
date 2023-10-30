@@ -46,5 +46,6 @@ module.exports = {
     'linebreak-style': 0,
     'react/jsx-no-bind': 0,
     'no-underscore-dangle': 0,
+    'no-console': 0,
   },
 };

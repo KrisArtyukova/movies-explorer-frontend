@@ -1,91 +1,12 @@
 import React, { useEffect } from 'react';
 import './SearchForm.css';
-import toast from 'react-hot-toast';
-import moviesApi from '../../utils/MoviesApi';
-import AppContext from '../../contexts/AppContext';
-import MoviesContext from '../../contexts/MoviesContext';
-import { MoviesPage, SavedMoviesState, SavedSearch } from '../../utils/constants';
-
-const ShortFilmDuration = 40;
-
-export function moviesFilter(movies, movieName, isShortName, page) {
-  if (page === MoviesPage.SavedMovies) {
-    const savedMoviesState = JSON.parse(localStorage.getItem(SavedMoviesState));
-    if (savedMoviesState === '' || savedMoviesState === null) return [];
-    const savedMovies = movies.filter((movie) => savedMoviesState.moviesId.includes(movie.movieId));
-
-    const filterByMovieName = savedMovies.filter(
-      (movie) => movie.nameRU.toLowerCase().includes(movieName.toLowerCase().trim())
-            || movie.nameEN.toLowerCase().includes(movieName.toLowerCase().trim()),
-    );
-
-    if (isShortName) {
-      return filterByMovieName.filter((movie) => movie.duration <= ShortFilmDuration);
-    }
-
-    return filterByMovieName;
-  }
-
-  const filterByMovieName = movies.filter(
-    (movie) => movie.nameRU.toLowerCase().includes(movieName.toLowerCase().trim())
-        || movie.nameEN.toLowerCase().includes(movieName.toLowerCase().trim()),
-  );
-
-  if (isShortName) {
-    return filterByMovieName.filter((movie) => movie.duration <= ShortFilmDuration);
-  }
-
-  return filterByMovieName;
-}
+import { MoviesPage, SavedSearch } from '../../utils/constants';
+import useSearchForm from './hook';
 
 function SearchForm({ page }) {
-  const moviesContext = React.useContext(MoviesContext);
-  const appContext = React.useContext(AppContext);
-
-  const getMovies = ({ movieName, isShortFilm }) => {
-    appContext.setLoading(true);
-    if (page === MoviesPage.Movies) {
-      moviesApi.getSavedMovies()
-        .then((response) => {
-          localStorage.setItem(
-            SavedMoviesState,
-            JSON.stringify({ moviesId: response.data.map((movie) => movie.movieId) }),
-          );
-          moviesApi.getMoviesBeatFilm()
-            .then((responseBeat) => {
-              appContext.setLoading(false);
-              appContext.setMoviesError(undefined);
-              moviesContext.setMovies(moviesFilter(responseBeat, movieName, isShortFilm, page));
-            })
-            .catch((error) => {
-              appContext.setLoading(false);
-              appContext.setMoviesError(error);
-              toast.error(`Произошла ошибка при получении фильмов! ${error}`, { icon: '❌' });
-            });
-        })
-        .catch((error) => {
-          appContext.setLoading(false);
-          appContext.setMoviesError(error);
-          toast.error(`Произошла ошибка при получении фильмов! ${error}`, { icon: '❌' });
-        });
-    } else {
-      moviesApi.getSavedMovies()
-        .then((response) => {
-          appContext.setLoading(false);
-          appContext.setMoviesError(undefined);
-          localStorage.setItem(
-            SavedMoviesState,
-            JSON.stringify({ moviesId: response.data.map((movie) => movie.movieId) }),
-          );
-          moviesContext.setMovies(moviesFilter(response.data, movieName, isShortFilm, page));
-        })
-        .catch((error) => {
-          appContext.setLoading(false);
-          appContext.setMoviesError(error);
-          toast.error(`Произошла ошибка при получении сохранённых фильмов! ${error}`, { icon: '❌' });
-        });
-    }
-  };
+  const {
+    handleFormSubmit, getMovies,
+  } = useSearchForm({ page });
 
   useEffect(() => {
     const savedSearch = localStorage.getItem(SavedSearch);
@@ -99,18 +20,6 @@ function SearchForm({ page }) {
     document.getElementById('checkbox').checked = parsedSavedSearch.isShortFilm;
     getMovies(JSON.parse(savedSearch));
   }, []);
-
-  const handleFormSubmit = (event) => {
-    event.preventDefault();
-    const formValues = {
-      movieName: event.target?.movieName?.value,
-      isShortFilm: event.target?.isShortFilm?.checked,
-    };
-
-    localStorage.setItem(SavedSearch, JSON.stringify(formValues));
-
-    getMovies(formValues);
-  };
 
   return (
     <section className="search">

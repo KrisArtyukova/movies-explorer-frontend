@@ -8,6 +8,7 @@ function useApp() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [credentialsError, setCredentialsError] = useState(undefined);
+  const [profileError, setProfileError] = useState(undefined);
   const [currentUser, setCurrentUser] = useState(null);
   const [loggedIn, setLoggedIn] = useState(false);
 
@@ -33,11 +34,7 @@ function useApp() {
     setLoading(true);
     mainApi.registrate({ name, password, email })
       .then(() => {
-        setLoading(false);
-        toast.success('Вы успешно зарегистрированы и будете перенаправлены на страницу входа!', { icon: '✅' });
-        setTimeout(() => {
-          navigate('/signin');
-        }, 2000);
+        onLoginUser({ password, email });
       })
       .catch((error) => {
         setLoading(false);
@@ -66,6 +63,8 @@ function useApp() {
     setCredentialsError,
     loading,
     setLoading,
+    profileError,
+    setProfileError,
   };
 }
 

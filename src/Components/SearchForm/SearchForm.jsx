@@ -5,7 +5,7 @@ import useSearchForm from './hook';
 
 function SearchForm({ page }) {
   const {
-    handleFormSubmit, getMovies,
+    handleFormSubmit, getMovies, handleCheckboxChange,
   } = useSearchForm({ page });
 
   useEffect(() => {
@@ -32,7 +32,7 @@ function SearchForm({ page }) {
         </div>
         <div className="switch">
           <label className="switch__label" htmlFor="checkbox">
-            <input type="checkbox" id="checkbox" name="isShortFilm" className="checkbox" />
+            <input type="checkbox" id="checkbox" name="isShortFilm" className="checkbox" onChange={handleCheckboxChange} />
             <span className="switch__label_slider" />
           </label>
           <p className="switch__text">Короткометражки</p>

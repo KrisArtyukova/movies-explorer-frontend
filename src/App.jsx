@@ -33,6 +33,8 @@ function App() {
     setCredentialsError,
     setLoading,
     loading,
+    profileError,
+    setProfileError,
   } = useApp();
   const mediaQueryList768 = window.matchMedia('(max-width: 768px)');
   const [siderIsOpen, setSiderIsOpen] = useState(false);
@@ -59,6 +61,8 @@ function App() {
       setCredentialsError,
       moviesError,
       setMoviesError,
+      profileError,
+      setProfileError,
     }}
     >
       <CurrentUserContext.Provider value={{ currentUser, setCurrentUser }}>

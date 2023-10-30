@@ -67,11 +67,33 @@ function useSearchForm({ page }) {
     getMovies(formValues);
   };
 
+  const handleCheckboxChange = (event) => {
+    const savedSearch = localStorage.getItem(SavedSearch);
+    const parsedSavedSearch = JSON.parse(savedSearch);
+
+    if (savedSearch === '' || savedSearch === null) {
+      const defaultFormValues = { movieName: '', isShortFilm: event.target.checked };
+      localStorage.setItem(SavedSearch, JSON.stringify(defaultFormValues));
+      getMovies(defaultFormValues);
+      return;
+    }
+
+    const formValues = {
+      movieName: parsedSavedSearch.movieName,
+      isShortFilm: event.target.checked,
+    };
+
+    localStorage.setItem(SavedSearch, JSON.stringify(formValues));
+
+    getMovies(formValues);
+  };
+
   return {
     moviesContext,
     appContext,
     getMovies,
     handleFormSubmit,
+    handleCheckboxChange,
   };
 }
 

@@ -65,8 +65,8 @@ class MainApi {
 }
 
 const mainApi = new MainApi({
-  baseUrl: 'https://kris-diplom-backend.nomoredomainsrocks.ru',
-  // baseUrl: 'http://localhost:3001',
+  // baseUrl: 'https://kris-diplom-backend.nomoredomainsrocks.ru',
+  baseUrl: 'http://localhost:3001',
   headers: {
     'Content-Type': 'application/json',
   },

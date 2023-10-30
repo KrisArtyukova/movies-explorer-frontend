@@ -167,7 +167,8 @@ function useMoviesCardList({ page }) {
           nameEN: likedMovie.nameEN,
           thumbnail: likedMovie.image.formats.thumbnail.url,
         })
-          .then(() => {
+          .then((response) => {
+            console.log(response);
             appContext.setLoading(false);
             localStorage.setItem(
               SavedMoviesState,

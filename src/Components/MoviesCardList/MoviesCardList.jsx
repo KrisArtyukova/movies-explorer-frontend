@@ -1,19 +1,10 @@
-import React, {
-  useCallback, useEffect,
-} from 'react';
+import React, { useCallback, useEffect } from 'react';
 import './MoviesCardList.css';
 import { v4 as uuidv4 } from 'uuid';
 import MoviesCard from '../MoviesCard/MoviesCard';
 import NotFound from '../NotFound/NotFound';
-import { MoviesPage, SavedMoviesState } from '../../utils/constants';
 import useMoviesCardList from './hook';
-
-const resolveLiked = () => {
-  const savedMoviesState = localStorage.getItem(SavedMoviesState);
-  if (savedMoviesState === '') return [];
-  if (savedMoviesState === null) return [];
-  return JSON.parse(savedMoviesState).moviesId;
-};
+import { SAVED_MOVIES_STATE } from '../../utils/constants';
 
 function MoviesCardList({ page }) {
   const {
@@ -26,12 +17,23 @@ function MoviesCardList({ page }) {
     resolveMoviesList,
     showMore,
     onLikeClick,
+    onDeleteClick,
     moviesContext,
     appContext,
   } = useMoviesCardList({ page });
 
   useEffect(() => {
-    if (moviesContext.movies.length) setLikedMoviesId(resolveLiked());
+    if (moviesContext.movies.length) {
+      const savedMoviesState = localStorage.getItem(SAVED_MOVIES_STATE);
+      if (savedMoviesState === '' && savedMoviesState === null) {
+        localStorage.setItem(
+          SAVED_MOVIES_STATE,
+          JSON.stringify({ movies: [] }),
+        );
+        setLikedMoviesId([]);
+      }
+      setLikedMoviesId(JSON.parse(savedMoviesState).movies);
+    }
   }, [moviesContext.movies]);
 
   useEffect(() => {
@@ -60,14 +62,15 @@ function MoviesCardList({ page }) {
             title={movie.nameRU}
             page={page}
             imgAlt={movie.description}
-            image={page === MoviesPage.Movies ? movie.image.url : movie.image}
+            image={movie?.image?.url || movie.image}
             trailerLink={movie.trailerLink}
             duration={movie.duration}
             key={uuidv4()}
             onLikeClick={onLikeClick}
-            movieId={movie.id}
+            onDeleteClick={onDeleteClick}
+            movieId={movie.movieId ?? movie.id}
             likedMoviesId={likedMoviesId}
-            _id={page === MoviesPage.Movies ? undefined : movie?._id}
+            _id={movie._id}
           />
         )) }
       </ul>

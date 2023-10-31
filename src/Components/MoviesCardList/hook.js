@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import toast from 'react-hot-toast';
 import MoviesContext from '../../contexts/MoviesContext';
 import AppContext from '../../contexts/AppContext';
-import { MoviesPage, SavedMoviesState } from '../../utils/constants';
+import { MoviesPage, SAVED_MOVIES_STATE } from '../../utils/constants';
 import moviesApi from '../../utils/MoviesApi';
 import { moviesFilter } from '../../utils/utils';
 
@@ -71,115 +71,86 @@ function useMoviesCardList({ page }) {
     }
   };
 
-  const handleLikeClick = (movieId) => {
-    const savedMoviesState = localStorage.getItem(SavedMoviesState);
-    if (savedMoviesState === '') return [movieId];
-    if (savedMoviesState === null) return [movieId];
+  const onDeleteClick = (_id) => {
+    appContext.setLoading(true);
+    moviesApi.deleteMovie(_id)
+      .then((response) => {
+        const savedMoviesState = localStorage.getItem(SAVED_MOVIES_STATE);
+        if (savedMoviesState === '' && savedMoviesState === null) {
+          localStorage.setItem(
+            SAVED_MOVIES_STATE,
+            JSON.stringify({ movies: [] }),
+          );
+          return;
+        }
 
-    if (page === MoviesPage.Movies) {
-      const filteredMovies = JSON.parse(savedMoviesState)
-        .moviesId.filter((movieIdState) => movieIdState !== movieId);
-      setLikedMoviesId(
-        likedMoviesId.includes(movieId)
-          ? likedMoviesId.filter((likedId) => likedId !== movieId)
-          : likedMoviesId.concat([movieId]),
-      );
-      return filteredMovies.concat([movieId]);
-    }
+        const newSavedMovies = JSON.parse(savedMoviesState).movies
+          .filter((movie) => movie._id !== response.data._id);
 
-    moviesContext.setMovies(moviesToShow.filter((movie) => movieId !== movie.id));
-    setMoviesToShow(moviesToShow.filter((movie) => movieId !== movie.id));
-    setLikedMoviesId(likedMoviesId.filter((likedMovieId) => likedMovieId !== movieId));
-    return JSON.parse(savedMoviesState).moviesId.filter((movieIdState) => movieIdState !== movieId);
+        localStorage.setItem(
+          SAVED_MOVIES_STATE,
+          JSON.stringify({ movies: newSavedMovies }),
+        );
+        appContext.setLoading(false);
+        appContext.setMoviesError(undefined);
+        if (page === MoviesPage.SavedMovies) {
+          moviesContext.setMovies(moviesFilter(newSavedMovies, '', false, page));
+        }
+        setLikedMoviesId(newSavedMovies);
+      })
+      .catch((error) => {
+        appContext.setLoading(false);
+        appContext.setMoviesError(error);
+        toast.error(`Произошла ошибка при удалении лайка! ${error}`, { icon: '❌' });
+      });
   };
 
-  const onLikeClick = (_id, movieId, isDeleteLike) => {
-    if (isDeleteLike) {
-      if (movieId) {
-        appContext.setLoading(true);
-        moviesApi.getSavedMovies()
-          .then((response) => {
-            const savedMovies = response.data;
-            const savedMovie = savedMovies.find((sM) => sM.movieId === movieId);
-            if (savedMovie) {
-              moviesApi.deleteMovie(savedMovie._id)
-                .then(() => {
-                  appContext.setLoading(false);
-                  localStorage.setItem(
-                    SavedMoviesState,
-                    JSON.stringify({ moviesId: handleLikeClick(movieId) }),
-                  );
-                })
-                .catch((error) => {
-                  appContext.setLoading(false);
-                  toast.error(`Произошла ошибка при удалении лайка! ${error}`, { icon: '❌' });
-                });
-            }
+  const onLikeClick = (movieId) => {
+    const likedMovie = moviesToShow.find((movie) => (movie.id ?? movie.movieId) === movieId);
+    if (likedMovie) {
+      appContext.setLoading(true);
+      moviesApi.createMovie({
+        movieId: likedMovie?.id || likedMovie?.movieId,
+        country: likedMovie.country,
+        description: likedMovie.description,
+        duration: likedMovie.duration,
+        trailerLink: likedMovie.trailerLink,
+        image: likedMovie.image.url || likedMovie.image,
+        director: likedMovie.director,
+        nameRU: likedMovie.nameRU,
+        year: likedMovie.year,
+        nameEN: likedMovie.nameEN,
+        thumbnail: likedMovie.image?.formats?.thumbnail?.url || likedMovie.thumbnail,
+      })
+        .then((response) => {
+          appContext.setLoading(false);
 
-            appContext.setLoading(false);
+          const savedMoviesState = localStorage.getItem(SAVED_MOVIES_STATE);
+          if (savedMoviesState === '' && savedMoviesState === null) {
             localStorage.setItem(
-              SavedMoviesState,
-              JSON.stringify({ moviesId: handleLikeClick(movieId) }),
+              SAVED_MOVIES_STATE,
+              JSON.stringify({ movies: [] }),
             );
-          })
-          .catch((error) => {
-            appContext.setLoading(false);
-            toast.error(`Произошла ошибка при удалении лайка! ${error}`, { icon: '❌' });
-          });
-      } else {
-        moviesApi.deleteMovie(_id)
-          .then(() => {
-            moviesApi.getSavedMovies()
-              .then((response) => {
-                appContext.setLoading(false);
-                appContext.setMoviesError(undefined);
-                localStorage.setItem(
-                  SavedMoviesState,
-                  JSON.stringify({ moviesId: response.data.map((movie) => movie.movieId) }),
-                );
-                moviesContext.setMovies(moviesFilter(response.data, '', false, page));
-              })
-              .catch((error) => {
-                appContext.setLoading(false);
-                appContext.setMoviesError(error);
-                toast.error(`Произошла ошибка при получении сохранённых фильмов! ${error}`, { icon: '❌' });
-              });
-          })
-          .catch((error) => {
-            appContext.setLoading(false);
-            toast.error(`Произошла ошибка при удалении лайка! ${error}`, { icon: '❌' });
-          });
-      }
-    } else {
-      const likedMovie = moviesToShow.find((movie) => movie.id === movieId);
-      if (likedMovie) {
-        appContext.setLoading(true);
-        moviesApi.createMovie({
-          movieId,
-          country: likedMovie.country,
-          description: likedMovie.description,
-          duration: likedMovie.duration,
-          trailerLink: likedMovie.trailerLink,
-          image: likedMovie.image.url,
-          director: likedMovie.director,
-          nameRU: likedMovie.nameRU,
-          year: likedMovie.year,
-          nameEN: likedMovie.nameEN,
-          thumbnail: likedMovie.image.formats.thumbnail.url,
+            return;
+          }
+
+          const newSavedMovies = JSON.parse(savedMoviesState).movies.concat([response.data]);
+          localStorage.setItem(
+            SAVED_MOVIES_STATE,
+            JSON.stringify({ movies: newSavedMovies }),
+          );
+
+          const filteredMovies = moviesContext.movies.filter(
+            (movieContext) => (movieContext?.id || movieContext?.movieId) !== response.data.movieId,
+          );
+          const concatedMovies = [response.data].concat(filteredMovies);
+          moviesContext.setMovies(concatedMovies);
+          setLikedMoviesId(likedMoviesId.concat([response.data]));
         })
-          .then((response) => {
-            console.log(response);
-            appContext.setLoading(false);
-            localStorage.setItem(
-              SavedMoviesState,
-              JSON.stringify({ moviesId: handleLikeClick(movieId) }),
-            );
-          })
-          .catch((error) => {
-            appContext.setLoading(false);
-            toast.error(`Произошла ошибка при установке лайка! ${error}`, { icon: '❌' });
-          });
-      }
+        .catch((error) => {
+          appContext.setLoading(false);
+          toast.error(`Произошла ошибка при установке лайка! ${error}`, { icon: '❌' });
+        });
     }
   };
 
@@ -190,8 +161,8 @@ function useMoviesCardList({ page }) {
     setStartPosition,
     moreBtnVisible,
     setMoreBtnVisilble,
-    handleLikeClick,
     onLikeClick,
+    onDeleteClick,
     showMore,
     resolveMoviesList,
     likedMoviesId,

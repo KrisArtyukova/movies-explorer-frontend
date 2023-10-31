@@ -2,7 +2,7 @@ import { useState } from 'react';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import mainApi from './utils/MainApi';
-import { SavedMoviesState, SavedSearch, USER_TOKEN } from './utils/constants';
+import { SAVED_MOVIES_STATE, SavedSearch, USER_TOKEN } from './utils/constants';
 
 function useApp() {
   const navigate = useNavigate();
@@ -45,7 +45,7 @@ function useApp() {
 
   function logout() {
     localStorage.removeItem(USER_TOKEN);
-    localStorage.removeItem(SavedMoviesState);
+    localStorage.removeItem(SAVED_MOVIES_STATE);
     localStorage.removeItem(SavedSearch);
     setLoggedIn(false);
     navigate('/');

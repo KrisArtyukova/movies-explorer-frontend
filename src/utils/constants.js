@@ -21,6 +21,8 @@ export const PROFILE_EMAIL = 'profileEmail';
 export const MAX_WIDTH_768 = '(max-width: 768px)';
 export const MIN_WIDTH_427 = '(min-width: 427px)';
 export const MAX_WIDTH_426 = '(max-width: 426px)';
+export const MIN_WIDTH_990 = '(min-width: 990px)';
+export const MAX_WIDTH_1279 = '(max-width: 1279px)';
 
 export const toastOptions = {
   success: {

@@ -21,12 +21,13 @@ function MoviesCardList({
   useEffect(() => {
     if (moviesContext.movies.length) {
       const savedMoviesState = localStorage.getItem(SAVED_MOVIES_STATE);
-      if (savedMoviesState === '' && savedMoviesState === null) {
+      if (savedMoviesState === '' || savedMoviesState === null) {
         localStorage.setItem(
           SAVED_MOVIES_STATE,
           JSON.stringify({ movies: [] }),
         );
         setLikedMoviesId([]);
+        return;
       }
       setLikedMoviesId(JSON.parse(savedMoviesState).movies);
     }

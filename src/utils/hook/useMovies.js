@@ -94,12 +94,18 @@ function useMovies({ page }) {
             JSON.stringify({ movies: newSavedMovies }),
           );
 
-          const filteredMovies = moviesContext.movies.filter(
-            (movieContext) => (movieContext?.id || movieContext?.movieId) !== response.data.movieId,
+          const allMovies = moviesContext.movies;
+          const changeFilmIndex = allMovies.findIndex(
+            (movie) => (movie?.id || movie?.movieId) === response.data.movieId,
           );
-          const concatedMovies = [response.data].concat(filteredMovies);
-          moviesContext.setMovies(concatedMovies);
-          setLikedMoviesId(likedMoviesId.concat([response.data]));
+          if (changeFilmIndex !== -1) {
+            const combinedAllMovies = allMovies.filter(
+              (movie) => (movie?.id || movie?.movieId) !== response.data.movieId,
+            );
+            combinedAllMovies.splice(changeFilmIndex, 0, response.data);
+            moviesContext.setMovies(combinedAllMovies);
+            setLikedMoviesId(likedMoviesId.concat([response.data]));
+          }
         })
         .catch((error) => {
           appContext.setLoading(false);

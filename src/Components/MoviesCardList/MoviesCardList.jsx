@@ -6,21 +6,17 @@ import NotFound from '../NotFound/NotFound';
 import useMoviesCardList from './hook';
 import { SAVED_MOVIES_STATE } from '../../utils/constants';
 
-function MoviesCardList({ page }) {
+function MoviesCardList({
+  page, onLikeClick, setMoviesToShow, moviesToShow, setLikedMoviesId, likedMoviesId, onDeleteClick,
+}) {
   const {
     setMoreBtnVisilble,
     moreBtnVisible,
-    moviesToShow,
-    setMoviesToShow,
-    likedMoviesId,
-    setLikedMoviesId,
     resolveMoviesList,
     showMore,
-    onLikeClick,
-    onDeleteClick,
     moviesContext,
     appContext,
-  } = useMoviesCardList({ page });
+  } = useMoviesCardList({ setMoviesToShow, moviesToShow });
 
   useEffect(() => {
     if (moviesContext.movies.length) {

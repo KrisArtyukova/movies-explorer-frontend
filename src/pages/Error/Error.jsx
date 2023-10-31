@@ -1,6 +1,7 @@
 import React from 'react';
 import './Error.css';
 import { Link } from 'react-router-dom';
+import { MAIN_PAGE } from '../../utils/constants';
 
 function Error() {
   return (
@@ -10,7 +11,7 @@ function Error() {
         <p className="error__message_description">Страница не найдена</p>
       </div>
       <div className="error__btn">
-        <Link to="/" className="error__btn_back">Назад</Link>
+        <Link to={MAIN_PAGE} className="error__btn_back">Назад</Link>
       </div>
     </section>
   );

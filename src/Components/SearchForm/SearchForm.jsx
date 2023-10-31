@@ -1,24 +1,36 @@
 import React, { useEffect } from 'react';
 import './SearchForm.css';
-import { MoviesPage, SavedSearch } from '../../utils/constants';
+import {
+  CHECKBOX, MOVIE_NAME, MoviesPage, SAVED_SEARCH_MOVIE, SAVED_SEARCH_SAVED_MOVIE,
+} from '../../utils/constants';
 import useSearchForm from './hook';
 
-function SearchForm({ page }) {
+function SearchForm({ page, getMovies }) {
   const {
-    handleFormSubmit, getMovies, handleCheckboxChange,
-  } = useSearchForm({ page });
+    handleFormSubmit, handleCheckboxChange,
+  } = useSearchForm({ page, getMovies });
 
   useEffect(() => {
-    const savedSearch = localStorage.getItem(SavedSearch);
-    if (page === MoviesPage.SavedMovies || savedSearch === '' || savedSearch === null) {
-      getMovies({ movieName: '', isShortFilm: false });
-      return;
-    }
+    const savedSearchMovie = localStorage.getItem(SAVED_SEARCH_MOVIE);
 
-    const parsedSavedSearch = JSON.parse(savedSearch);
-    document.getElementById('movieName').value = parsedSavedSearch.movieName;
-    document.getElementById('checkbox').checked = parsedSavedSearch.isShortFilm;
-    getMovies(JSON.parse(savedSearch));
+    if (page === MoviesPage.Movies) {
+      if (savedSearchMovie === '' || savedSearchMovie === null) {
+        getMovies({ movieName: '', isShortFilm: false });
+        return;
+      }
+
+      const parsedSavedSearch = JSON.parse(savedSearchMovie);
+      document.getElementById(MOVIE_NAME).value = parsedSavedSearch.movieName;
+      document.getElementById(CHECKBOX).checked = parsedSavedSearch.isShortFilm;
+      getMovies(JSON.parse(savedSearchMovie));
+    } else if (page === MoviesPage.SavedMovies) {
+      const formValues = {
+        movieName: '',
+        isShortFilm: false,
+      };
+      localStorage.setItem(SAVED_SEARCH_SAVED_MOVIE, JSON.stringify(formValues));
+      getMovies({ movieName: '', isShortFilm: false });
+    }
   }, []);
 
   return (
@@ -26,13 +38,13 @@ function SearchForm({ page }) {
       <form className="search__container" onSubmit={handleFormSubmit}>
         <div className="search__form">
           <div className="search__form-cont">
-            <input required className="search__form_input" id="movieName" name="movieName" type="text" placeholder="Фильм" />
+            <input required className="search__form_input" id={MOVIE_NAME} name={MOVIE_NAME} type="text" placeholder="Фильм" />
           </div>
           <button className="search__form_button" type="submit">Найти</button>
         </div>
         <div className="switch">
-          <label className="switch__label" htmlFor="checkbox">
-            <input type="checkbox" id="checkbox" name="isShortFilm" className="checkbox" onChange={handleCheckboxChange} />
+          <label className="switch__label" htmlFor={CHECKBOX}>
+            <input type={CHECKBOX} id={CHECKBOX} name="isShortFilm" className="checkbox" onChange={handleCheckboxChange} />
             <span className="switch__label_slider" />
           </label>
           <p className="switch__text">Короткометражки</p>

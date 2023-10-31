@@ -1,24 +1,23 @@
 import React, { useState } from 'react';
-import toast from 'react-hot-toast';
 import MoviesContext from '../../contexts/MoviesContext';
 import AppContext from '../../contexts/AppContext';
-import { MoviesPage, SAVED_MOVIES_STATE } from '../../utils/constants';
-import moviesApi from '../../utils/MoviesApi';
-import { moviesFilter } from '../../utils/utils';
+import {
+  MAX_WIDTH_426,
+  MAX_WIDTH_768,
+  MIN_WIDTH_427,
+} from '../../utils/constants';
 
 const countOfMoviesToShowForFullSize = 16;
 const countOfMoviesToShowForMiddleSize = 8;
 const countOfMoviesToShowForSmallSize = 5;
 
-function useMoviesCardList({ page }) {
+function useMoviesCardList({ setMoviesToShow, moviesToShow }) {
   const moviesContext = React.useContext(MoviesContext);
   const appContext = React.useContext(AppContext);
-  const mediaQueryList427to768 = window.matchMedia('(min-width: 427px) and (max-width: 768px)');
-  const mediaQueryList426 = window.matchMedia('(max-width: 426px)');
-  const [moviesToShow, setMoviesToShow] = useState([]);
+  const mediaQueryList427to768 = window.matchMedia(`${MIN_WIDTH_427} and ${MAX_WIDTH_768}`);
+  const mediaQueryList426 = window.matchMedia(MAX_WIDTH_426);
   const [startPosition, setStartPosition] = useState(0);
   const [moreBtnVisible, setMoreBtnVisilble] = useState(false);
-  const [likedMoviesId, setLikedMoviesId] = useState([]);
 
   function resolveMoviesList() {
     if (mediaQueryList427to768.matches) {
@@ -71,89 +70,6 @@ function useMoviesCardList({ page }) {
     }
   };
 
-  const onDeleteClick = (_id) => {
-    appContext.setLoading(true);
-    moviesApi.deleteMovie(_id)
-      .then((response) => {
-        const savedMoviesState = localStorage.getItem(SAVED_MOVIES_STATE);
-        if (savedMoviesState === '' && savedMoviesState === null) {
-          localStorage.setItem(
-            SAVED_MOVIES_STATE,
-            JSON.stringify({ movies: [] }),
-          );
-          return;
-        }
-
-        const newSavedMovies = JSON.parse(savedMoviesState).movies
-          .filter((movie) => movie._id !== response.data._id);
-
-        localStorage.setItem(
-          SAVED_MOVIES_STATE,
-          JSON.stringify({ movies: newSavedMovies }),
-        );
-        appContext.setLoading(false);
-        appContext.setMoviesError(undefined);
-        if (page === MoviesPage.SavedMovies) {
-          moviesContext.setMovies(moviesFilter(newSavedMovies, '', false, page));
-        }
-        setLikedMoviesId(newSavedMovies);
-      })
-      .catch((error) => {
-        appContext.setLoading(false);
-        appContext.setMoviesError(error);
-        toast.error(`Произошла ошибка при удалении лайка! ${error}`, { icon: '❌' });
-      });
-  };
-
-  const onLikeClick = (movieId) => {
-    const likedMovie = moviesToShow.find((movie) => (movie.id ?? movie.movieId) === movieId);
-    if (likedMovie) {
-      appContext.setLoading(true);
-      moviesApi.createMovie({
-        movieId: likedMovie?.id || likedMovie?.movieId,
-        country: likedMovie.country,
-        description: likedMovie.description,
-        duration: likedMovie.duration,
-        trailerLink: likedMovie.trailerLink,
-        image: likedMovie.image.url || likedMovie.image,
-        director: likedMovie.director,
-        nameRU: likedMovie.nameRU,
-        year: likedMovie.year,
-        nameEN: likedMovie.nameEN,
-        thumbnail: likedMovie.image?.formats?.thumbnail?.url || likedMovie.thumbnail,
-      })
-        .then((response) => {
-          appContext.setLoading(false);
-
-          const savedMoviesState = localStorage.getItem(SAVED_MOVIES_STATE);
-          if (savedMoviesState === '' && savedMoviesState === null) {
-            localStorage.setItem(
-              SAVED_MOVIES_STATE,
-              JSON.stringify({ movies: [] }),
-            );
-            return;
-          }
-
-          const newSavedMovies = JSON.parse(savedMoviesState).movies.concat([response.data]);
-          localStorage.setItem(
-            SAVED_MOVIES_STATE,
-            JSON.stringify({ movies: newSavedMovies }),
-          );
-
-          const filteredMovies = moviesContext.movies.filter(
-            (movieContext) => (movieContext?.id || movieContext?.movieId) !== response.data.movieId,
-          );
-          const concatedMovies = [response.data].concat(filteredMovies);
-          moviesContext.setMovies(concatedMovies);
-          setLikedMoviesId(likedMoviesId.concat([response.data]));
-        })
-        .catch((error) => {
-          appContext.setLoading(false);
-          toast.error(`Произошла ошибка при установке лайка! ${error}`, { icon: '❌' });
-        });
-    }
-  };
-
   return {
     moviesToShow,
     setMoviesToShow,
@@ -161,12 +77,8 @@ function useMoviesCardList({ page }) {
     setStartPosition,
     moreBtnVisible,
     setMoreBtnVisilble,
-    onLikeClick,
-    onDeleteClick,
     showMore,
     resolveMoviesList,
-    likedMoviesId,
-    setLikedMoviesId,
     moviesContext,
     appContext,
   };

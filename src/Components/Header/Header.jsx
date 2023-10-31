@@ -4,6 +4,10 @@ import logo from '../../images/logo.svg';
 import './Header.css';
 import AccountButton from '../AccountButton/AccountButton';
 import AppContext from '../../contexts/AppContext';
+import {
+  MAX_WIDTH_768,
+  MOVIES, SAVED_MOVIES, SIGN_IN, SIGN_UP,
+} from '../../utils/constants';
 
 export const HeaderView = {
   Authorized: 'Authorized',
@@ -23,10 +27,10 @@ function FullSizeHeaderMenu({ colorMode }) {
   let savedMoviesLinkClass = classes;
 
   switch (location.pathname) {
-    case '/movies':
+    case MOVIES:
       moviesLinkClass = `${moviesLinkClass} ${modificators}`;
       break;
-    case '/saved-movies':
+    case SAVED_MOVIES:
       savedMoviesLinkClass = `${moviesLinkClass} ${modificators}`;
       break;
     default:
@@ -36,10 +40,10 @@ function FullSizeHeaderMenu({ colorMode }) {
   return (
     <>
       <div className="header__navigation-container">
-        <Link to="/movies" className={moviesLinkClass} aria-label="Фильмы">
+        <Link to={MOVIES} className={moviesLinkClass} aria-label="Фильмы">
           Фильмы
         </Link>
-        <Link to="/saved-movies" className={savedMoviesLinkClass} aria-label="Сохранённые фильмы">
+        <Link to={SAVED_MOVIES} className={savedMoviesLinkClass} aria-label="Сохранённые фильмы">
           Сохранённые фильмы
         </Link>
       </div>
@@ -60,7 +64,7 @@ function HeaderBurger({ colorMode }) {
 function Header({ headerView, colorMode }) {
   const [content, setContent] = useState(null);
   let headerMainClass = '';
-  const mediaQueryList768 = window.matchMedia('(max-width: 768px)');
+  const mediaQueryList768 = window.matchMedia(MAX_WIDTH_768);
 
   function handleResize() {
     if (mediaQueryList768.matches) {
@@ -82,10 +86,10 @@ function Header({ headerView, colorMode }) {
       case HeaderView.NotAuthorized:
         setContent(
           <nav className="header__btn">
-            <Link to="/signup" className="header__btn-reg" aria-label="Регистрация">
+            <Link to={SIGN_UP} className="header__btn-reg" aria-label="Регистрация">
               Регистрация
             </Link>
-            <Link to="/signin" className="header__btn-in" aria-label="Войти">
+            <Link to={SIGN_IN} className="header__btn-in" aria-label="Войти">
               Войти
             </Link>
           </nav>,

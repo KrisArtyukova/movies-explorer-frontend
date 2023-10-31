@@ -1,61 +1,13 @@
 import React from 'react';
-import toast from 'react-hot-toast';
 import MoviesContext from '../../contexts/MoviesContext';
 import AppContext from '../../contexts/AppContext';
-import { MoviesPage, SAVED_MOVIES_STATE, SavedSearch } from '../../utils/constants';
-import moviesApi from '../../utils/MoviesApi';
-import { moviesFilter } from '../../utils/utils';
+import {
+  MoviesPage, SAVED_SEARCH_MOVIE, SAVED_SEARCH_SAVED_MOVIE,
+} from '../../utils/constants';
 
-function useSearchForm({ page }) {
+function useSearchForm({ page, getMovies }) {
   const moviesContext = React.useContext(MoviesContext);
   const appContext = React.useContext(AppContext);
-
-  const getMovies = ({ movieName, isShortFilm }) => {
-    appContext.setLoading(true);
-    if (page === MoviesPage.Movies) {
-      moviesApi.getMoviesBeatFilm()
-        .then((responseBeats) => {
-          moviesApi.getSavedMovies()
-            .then((savedMoviesData) => {
-              const savedMovies = savedMoviesData.data;
-              appContext.setLoading(false);
-              appContext.setMoviesError(undefined);
-              localStorage.setItem(
-                SAVED_MOVIES_STATE,
-                JSON.stringify({ movies: savedMovies }),
-              );
-              const filteredMovies = responseBeats
-                .filter((responseBeat) => !savedMovies
-                  .some((savedMovie) => savedMovie.movieId === responseBeat.id));
-              const concatMovies = savedMovies.concat(filteredMovies);
-
-              moviesContext.setMovies(moviesFilter(concatMovies, movieName, isShortFilm, page));
-            })
-            .catch(() => {});
-        })
-        .catch((error) => {
-          appContext.setLoading(false);
-          appContext.setMoviesError(error);
-          toast.error(`Произошла ошибка при получении фильмов! ${error}`, { icon: '❌' });
-        });
-    } else {
-      moviesApi.getSavedMovies()
-        .then((response) => {
-          appContext.setLoading(false);
-          appContext.setMoviesError(undefined);
-          localStorage.setItem(
-            SAVED_MOVIES_STATE,
-            JSON.stringify({ movies: response.data }),
-          );
-          moviesContext.setMovies(moviesFilter(response.data, movieName, isShortFilm, page));
-        })
-        .catch((error) => {
-          appContext.setLoading(false);
-          appContext.setMoviesError(error);
-          toast.error(`Произошла ошибка при получении сохранённых фильмов! ${error}`, { icon: '❌' });
-        });
-    }
-  };
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
@@ -63,31 +15,54 @@ function useSearchForm({ page }) {
       movieName: event.target?.movieName?.value,
       isShortFilm: event.target?.isShortFilm?.checked,
     };
+    if (page === MoviesPage.Movies) {
+      localStorage.setItem(SAVED_SEARCH_MOVIE, JSON.stringify(formValues));
+    }
 
-    localStorage.setItem(SavedSearch, JSON.stringify(formValues));
-
+    if (page === MoviesPage.SavedMovies) {
+      localStorage.setItem(SAVED_SEARCH_SAVED_MOVIE, JSON.stringify(formValues));
+    }
     getMovies(formValues);
   };
 
   const handleCheckboxChange = (event) => {
-    const savedSearch = localStorage.getItem(SavedSearch);
-    const parsedSavedSearch = JSON.parse(savedSearch);
+    const savedSearchMovie = localStorage.getItem(SAVED_SEARCH_MOVIE);
+    const savedSearchSavedMovie = localStorage.getItem(SAVED_SEARCH_SAVED_MOVIE);
+    const parsedMovieSearch = JSON.parse(savedSearchMovie);
+    const parsedSavedMovieSearch = JSON.parse(savedSearchSavedMovie);
+    const defaultFormValues = { movieName: '', isShortFilm: event.target.checked };
 
-    if (savedSearch === '' || savedSearch === null) {
-      const defaultFormValues = { movieName: '', isShortFilm: event.target.checked };
-      localStorage.setItem(SavedSearch, JSON.stringify(defaultFormValues));
-      getMovies(defaultFormValues);
-      return;
+    if (page === MoviesPage.Movies) {
+      if (savedSearchMovie === '' || savedSearchMovie === null) {
+        localStorage.setItem(SAVED_SEARCH_MOVIE, JSON.stringify(defaultFormValues));
+        getMovies(defaultFormValues);
+        return;
+      }
+    } else if (page === MoviesPage.SavedMovies) {
+      if (savedSearchSavedMovie === '' || savedSearchSavedMovie === null) {
+        localStorage.setItem(SAVED_SEARCH_SAVED_MOVIE, JSON.stringify(defaultFormValues));
+        getMovies(defaultFormValues);
+        return;
+      }
     }
 
-    const formValues = {
-      movieName: parsedSavedSearch.movieName,
-      isShortFilm: event.target.checked,
-    };
+    if (page === MoviesPage.Movies) {
+      const formValues = {
+        movieName: parsedMovieSearch.movieName,
+        isShortFilm: event.target.checked,
+      };
+      localStorage.setItem(SAVED_SEARCH_MOVIE, JSON.stringify(formValues));
+      getMovies(formValues);
+    }
 
-    localStorage.setItem(SavedSearch, JSON.stringify(formValues));
-
-    getMovies(formValues);
+    if (page === MoviesPage.SavedMovies) {
+      const formValues = {
+        movieName: parsedSavedMovieSearch.movieName,
+        isShortFilm: event.target.checked,
+      };
+      localStorage.setItem(SAVED_SEARCH_SAVED_MOVIE, JSON.stringify(formValues));
+      getMovies(formValues);
+    }
   };
 
   return {

@@ -3,6 +3,7 @@ import './Sider.css';
 import { Link } from 'react-router-dom';
 import AccountButton from '../AccountButton/AccountButton';
 import AppContext from '../../contexts/AppContext';
+import { MOVIES, SAVED_MOVIES } from '../../utils/constants';
 
 function Sider() {
   const appContext = React.useContext(AppContext);
@@ -17,8 +18,8 @@ function Sider() {
         <div className="sider__content__menu-container">
           <div className="sider__content__menu-container__links">
             <Link to="/" className="sider__content__menu-container__links__link">Главная</Link>
-            <Link to="/movies" className="sider__content__menu-container__links__link">Фильмы</Link>
-            <Link to="/saved-movies" className="sider__content__menu-container__links__link">Сохранённые фильмы</Link>
+            <Link to={MOVIES} className="sider__content__menu-container__links__link">Фильмы</Link>
+            <Link to={SAVED_MOVIES} className="sider__content__menu-container__links__link">Сохранённые фильмы</Link>
           </div>
           <AccountButton />
         </div>

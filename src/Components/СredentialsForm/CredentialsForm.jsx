@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import logo from '../../images/logo.svg';
 import AppContext from '../../contexts/AppContext';
 import useValidation, { Field } from '../../utils/useValidation';
+import { MAIN_PAGE, SIGN_IN, SIGN_UP } from '../../utils/constants';
 
 export const View = {
   Login: 'Login',
@@ -55,7 +56,7 @@ function CredentialsForm({ view, onRegistrate, onLogin }) {
       footerContent = (
         <p className="credentials__container_text">
           Ещё не зарегистрированы?
-          <Link to="/signup" className="credentials__container_text-src"> Регистрация</Link>
+          <Link to={SIGN_UP} className="credentials__container_text-src"> Регистрация</Link>
         </p>
       );
       break;
@@ -66,7 +67,7 @@ function CredentialsForm({ view, onRegistrate, onLogin }) {
       footerContent = (
         <p className="credentials__container_text">
           Уже зарегистрированы?
-          <Link to="/signin" className="credentials__container_text-src"> Войти</Link>
+          <Link to={SIGN_IN} className="credentials__container_text-src"> Войти</Link>
         </p>
       );
       break;
@@ -81,8 +82,8 @@ function CredentialsForm({ view, onRegistrate, onLogin }) {
       email: event.target?.credentialsEmail?.value,
       password: event.target?.credentialsPassword?.value,
     };
-    if (view === View.Login) onLogin(formValues);
-    if (view === View.Register) onRegistrate(formValues);
+    if (view === View.Login) onLogin(formValues, setDisabled);
+    if (view === View.Register) onRegistrate(formValues, setDisabled);
   };
 
   useEffect(() => () => appContext.setCredentialsError(undefined), []);
@@ -90,7 +91,7 @@ function CredentialsForm({ view, onRegistrate, onLogin }) {
   return (
     <div className="credentials">
       <div className="credentials__header">
-        <Link to="/" className="credentials__header_link"><img src={logo} className="credentials__header_logo" alt="Логотип" /></Link>
+        <Link to={MAIN_PAGE} className="credentials__header_link"><img src={logo} className="credentials__header_logo" alt="Логотип" /></Link>
         <h1 className="credentials__header_title">{title}</h1>
       </div>
       <form className={formClass} id="credentialsForm" onSubmit={handleFormSubmit}>

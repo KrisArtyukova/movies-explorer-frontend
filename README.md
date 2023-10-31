@@ -4,8 +4,9 @@
 Ссылка на макет в Figma:
 https://www.figma.com/file/6FMWkB94wE7KTkcCgUXtnC/Дипломный-проект?type=design&node-id=891-3857&mode=design&t=ONNrELZqy00peIqn-0
 
-Ссылка на работу:
+Ссылка на работу: https://kris-diplom.nomoredomainsrocks.ru
 
+Ссылка на pull-request: https://github.com/KrisArtyukova/movies-explorer-frontend/pull/2
 
 Дипломный проект включал 5 этапов.
 Составление плана, работу над бэкендом, вёрстку, добавление функциональности и финальные доработки.

@@ -2,10 +2,10 @@ import React from 'react';
 import './Register.css';
 import CredentialsForm, { View } from '../../Components/СredentialsForm/CredentialsForm';
 
-function Register() {
+function Register({ onRegistrate }) {
   return (
     <main className="register">
-      <CredentialsForm view={View.Register} />
+      <CredentialsForm view={View.Register} onRegistrate={onRegistrate} />
     </main>
   );
 }

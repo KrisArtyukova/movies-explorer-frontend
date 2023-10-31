@@ -7,11 +7,17 @@ import NavTab from '../../Components/NavTab/NavTab';
 import AboutProject from '../../Components/AboutProject/AboutProject';
 import AboutMe from '../../Components/AboutMe/AboutMe';
 import Portfolio from '../../Components/Portfolio/Portfolio';
+import AppContext from '../../contexts/AppContext';
 
 function MainPage() {
+  const appContext = React.useContext(AppContext);
+
   return (
     <>
-      <Header headerView={HeaderView.NotAuthorized} colorMode={ColorMode.Dark} />
+      <Header
+        headerView={appContext.loggedIn ? HeaderView.Authorized : HeaderView.NotAuthorized}
+        colorMode={ColorMode.Dark}
+      />
       <main className="main__page">
         <Promo />
         <div className="page-container">

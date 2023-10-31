@@ -24,17 +24,21 @@
 .card__img {
     width: 100%;
     padding-bottom: 11px;
+    height: 151px;
+    object-fit: cover;
 }
 
 @media screen and (max-width: 768px) {
     .card__img {
         padding-bottom: 9px;
+        height: 190px;
     }
 }
 
 @media screen and (max-width: 320px) {
     .card__img {
         padding-bottom: 9px;
+        height: 168px;
     }
 }
 
@@ -63,9 +67,10 @@
     }
 }
 
-@media screen and (max-width: 320px)
-.card__description_text {
-    padding-bottom: 30px;
+@media screen and (max-width: 320px) {
+    .card__description_text {
+        padding-bottom: 30px;
+    }
 }
 
 .card__description_like {

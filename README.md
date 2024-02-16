@@ -31,6 +31,6 @@ npm start
 ## Ссылки проекта
 
 1. Проект выложен на сервер, доступ по [ссылке](https://kris-diplom.nomoredomainsrocks.ru/).
-2. Макет проекта можно посмотреть [здесь]([https://disk.yandex.ru/d/b6ReMFTXF3LHuA](https://www.figma.com/file/6FMWkB94wE7KTkcCgUXtnC/Дипломный-проект?type=design&node-id=891-3857&mode=design&t=ONNrELZqy00peIqn-0)https://www.figma.com/file/6FMWkB94wE7KTkcCgUXtnC/Дипломный-проект?type=design&node-id=891-3857&mode=design&t=ONNrELZqy00peIqn-0](https://www.figma.com/file/1oHqbYSJNeIkwyvgEaMCVN/ui-kit%2Flight-1-(Copy)?type=design&node-id=0%3A1&mode=design&t=cVkskOW6tWfgKfER-1)https://www.figma.com/file/1oHqbYSJNeIkwyvgEaMCVN/ui-kit%2Flight-1-(Copy)?type=design&node-id=0%3A1&mode=design&t=cVkskOW6tWfgKfER-1]).
+2.Макет проекта можно посмотреть [здесь](https://disk.yandex.ru/d/b6ReMFTXF3LHuA](https://www.figma.com/file/1oHqbYSJNeIkwyvgEaMCVN/ui-kit%2Flight-1-(Copy)?type=design&node-id=0%3A1&mode=design&t=cVkskOW6tWfgKfER-1)https://www.figma.com/file/1oHqbYSJNeIkwyvgEaMCVN/ui-kit%2Flight-1-(Copy)?type=design&node-id=0%3A1&mode=design&t=cVkskOW6tWfgKfER-1).
 3. Пул реквест расположен по [ссылке]().
 

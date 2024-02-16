@@ -1,19 +1,36 @@
+# movies-explorer-frontend
 
-Проект: Учебный проект студента факультета Веб-разработки.
+Фронтенд дипломной работы на курсе веб-разработки Яндекс Практикум.
 
-Ссылка на макет в Figma:
-https://www.figma.com/file/6FMWkB94wE7KTkcCgUXtnC/Дипломный-проект?type=design&node-id=891-3857&mode=design&t=ONNrELZqy00peIqn-0
+## Технологии
+![React](https://img.shields.io/badge/-React-61daf8?logo=react&logoColor=black)
+![HTML5](https://img.shields.io/badge/-HTML5-e34f26?logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/-CSS3-1572b6?logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/-JavaScript-f7df1e?logo=javaScript&logoColor=black)
+![Webpack](https://img.shields.io/badge/-Webpack-99d6f8?logo=webpack&logoColor=black)
+![API](https://img.shields.io/badge/-api-yellow)
+![BEM](https://img.shields.io/badge/-BEM-yellowgreen)
 
-Ссылка на работу:
-https://kris-diplom.nomoredomainsrocks.ru/
+## Запуск проекта
 
-Дипломный проект включал 5 этапов.
-Составление плана, работу над бэкендом, вёрстку, добавление функциональности и финальные доработки.
+Для запуска проекта необходимо выполнить следующие действия:
 
-На выполнение диплома ушло 5 недель.
-У каждого этапа был мягкий и жёсткий дедлайн, которые нужно было соблюдать, чтобы успешно защититься.
+1. Склонировать проект на ваш компьютер с [Github]() с помощью команды:
+```
+git clone 
+```
+2. Установить зависимости:
+```
+npm install
+```
+3. Запустить проект:
+```
+npm start
+```
 
+## Ссылки проекта
 
-На курсе веб-разработки мы освоили технологии, которые применили в дипломном проекте.
-HTML, CSS, JS, React, Git, Express.js, MongoDB.
+1. Проект выложен на сервер, доступ по [ссылке](https://kris-diplom.nomoredomainsrocks.ru/).
+2. Макет проекта можно посмотреть [здесь]([https://disk.yandex.ru/d/b6ReMFTXF3LHuA](https://www.figma.com/file/6FMWkB94wE7KTkcCgUXtnC/Дипломный-проект?type=design&node-id=891-3857&mode=design&t=ONNrELZqy00peIqn-0)https://www.figma.com/file/6FMWkB94wE7KTkcCgUXtnC/Дипломный-проект?type=design&node-id=891-3857&mode=design&t=ONNrELZqy00peIqn-0).
+3. Пул реквест расположен по [ссылке]().
 
